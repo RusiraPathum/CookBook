@@ -27,6 +27,10 @@ const getRecipe = async (req, res) => {
   try {
     const { id } = req.params;
     const recipe = await Recipe.getRecipeById(id);
+    if (!recipe) {
+      res.status(404);
+      throw new Error(`cannot find any product with ID ${id}`);
+    }
     res.status(200).json({ recipe });
   } catch (error) {
     console.log(error.message);
