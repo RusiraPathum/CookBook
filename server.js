@@ -1,9 +1,11 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 
 let app = express();
-let port = process.env.PORT || 3000; 
+let PORT = process.env.PORT || 3000; 
 
-app.listen(port, () => {
-    console.log("server started");
+
+app.listen(PORT, () => {
+    console.log(`Node API app is running on port ${PORT}`);
   });
