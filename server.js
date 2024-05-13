@@ -18,19 +18,30 @@ const recipes = [
 app.use(bodyParser.json());
 
 app.get('/recipes', (req, res) => {
-    const { query } = req.query;
+  const { query, ingredient } = req.query;
 
-    if (!query) {
-        return res.status(400).json({ error: 'Missing query parameter' });
-    }
+  if (!query && !ingredient) {
+      return res.status(400).json({ error: 'Missing query parameters' });
+  }
 
-    
-    const results = recipes.filter(recipe =>
-        recipe.name.toLowerCase().includes(query.toLowerCase()) ||
-        recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(query.toLowerCase()))
-    );
+  let results = recipes;
 
-    res.json(results);
+  // Search logic
+  if (query) {
+      results = results.filter(recipe =>
+          recipe.name.toLowerCase().includes(query.toLowerCase()) ||
+          recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(query.toLowerCase()))
+      );
+  }
+
+  // Filter logic
+  if (ingredient) {
+      results = results.filter(recipe =>
+          recipe.ingredients.includes(ingredient.toLowerCase())
+      );
+  }
+
+  res.json(results);
 });
 
 app.listen(port, () => {
