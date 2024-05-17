@@ -20,6 +20,10 @@ const recipeSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add an image"],
     },
+    status: {
+      type: Boolean,
+      default: true,
+    },
   },
   {
     timestamps: true,
@@ -32,6 +36,7 @@ const Recipe = mongoose.model("Recipe", recipeSchema);
 // Logic for creating a recipe
 Recipe.createRecipe = async (recipeData) => {
   try {
+    // console.log(recipeData);
     return await Recipe.create(recipeData);
   } catch (error) {
     throw new Error(error.message);
@@ -69,6 +74,15 @@ Recipe.updateRecipeById = async (id, updatedData) => {
 Recipe.deleteRecipeById = async (id) => {
   try {
     return await Recipe.findByIdAndDelete(id);
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// Logic for updating recipe status by ID
+Recipe.updateRecipeStatusById = async (id, status) => {
+  try {
+    return await Recipe.findByIdAndUpdate(id, { status: status }, { new: true });
   } catch (error) {
     throw new Error(error.message);
   }
