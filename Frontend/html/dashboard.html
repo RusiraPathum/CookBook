@@ -5,10 +5,10 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta name="robots" content="noindex,nofollow" />
-    <title>CookBook</title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>CookBook</title>
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png" />
   <link href="../assets/libs/flot/css/float-chart.css" rel="stylesheet" />
   <link href="../dist/css/style.min.css" rel="stylesheet" />
@@ -60,7 +60,7 @@
                 </li>
               </ul>
             </li>
-            
+
             <li class="nav-item dropdown">
               <a class="
                     nav-link
@@ -100,12 +100,12 @@
         <nav class="sidebar-nav">
           <ul id="sidebarnav" class="pt-4">
             <li class="sidebar-item">
-              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html" aria-expanded="false"><i
-                  class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a>
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
+                aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link waves-effect waves-dark sidebar-link" href="recipe.html" aria-expanded="false"><i
-                class="mdi mdi-blur-linear"></i><span class="hide-menu">Recipe</span></a>
+                  class="mdi mdi-blur-linear"></i><span class="hide-menu">Recipe</span></a>
             </li>
           </ul>
         </nav>
@@ -128,7 +128,9 @@
                 <h1 class="font-light text-white">
                   <i class="mdi mdi-blur-linear"></i>
                 </h1>
-                <h6 class="text-white">Recipes <span id="activeRecipeCount"></span></h6>
+                <h6 class="text-white">Recipes</h6>
+                <p class="text-white">Active Recipes - <span id="activeRecipeCount"></span></p>
+                <p class="text-white">Inactive Recipes - <span id="inactiveRecipeCount"></span></p>
               </div>
             </div>
           </div>
@@ -163,6 +165,27 @@
             </div>
           </div>
         </div>
+
+        <!-- <div class="row">
+          <div id="recent-recipe" class="recipe-card" style="display: ;">
+            <div class="recipe-image">
+              <img src="" alt="Recipe Image" id="recentRecipeImage">
+            </div>
+            <div class="recipe-content">
+              <h3 class="recipe-title" id="recentRecipeTitle">Recipe Title</h3>
+              <p class="recipe-description" id="recentRecipeDescription">Short description of the recipe...</p>
+              <div class="recipe-details">
+                <span class="recipe-ingredients" id="recentRecipeIngredients">Ingredients: List of ingredients...</span>
+                <span class="recipe-instructions" id="recentRecipeInstructions">Instructions: Brief instructions...</span>
+              </div>
+              <div class="recipe-footer">
+                <button class="view-recipe btn btn-primary" id="recentRecipeViewBtn">View Recipe</button>
+                <button class="edit-recipe btn btn-secondary" id="recentRecipeEditBtn">Edit</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        
 
         <div class="row mt-5">
           <div class="col-md-12">
@@ -235,8 +258,8 @@
       </div>
 
       <<footer class="footer text-center">
-      All Rights Reserved by CookBook.
-    </footer>
+        All Rights Reserved by CookBook.
+        </footer>
     </div>
   </div>
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>

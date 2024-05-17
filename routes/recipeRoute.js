@@ -3,7 +3,10 @@ let router = express.Router();
 let recipeController = require('../controllers/recipeController');
 
 // Route to get the count of active recipes
-router.get('/count', recipeController.getActiveRecipeCount);
+router.get('/active-count', recipeController.getActiveRecipeCount);
+
+// Route to get the count of inactive recipes
+router.get('/inactive-count', recipeController.getInactiveRecipeCount);
 
 //Create recipe route
 router.post('/create', recipeController.createRecipe);
@@ -29,5 +32,8 @@ router.delete('/delete/:id', function (req, res) {
 });
 
 router.put('/update-status/:id', recipeController.updateRecipeStatus);
+
+// router.get('/recent', recipeController.getMostRecentRecipe);
+
 
 module.exports = router;

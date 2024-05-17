@@ -14677,6 +14677,70 @@ label {
   border-radius: 50px; /* Add rounded corners */
 }
 
+.recipe-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  width: 300px;
+  margin: 20px;
+}
+
+.recipe-card:hover {
+  transform: translateY(-10px);
+}
+
+.recipe-image img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+}
+
+.recipe-content {
+  padding: 15px;
+}
+
+.recipe-title {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.recipe-description {
+  color: #666;
+  margin: 10px 0;
+}
+
+.recipe-details {
+  font-size: 0.9em;
+  color: #333;
+}
+
+.recipe-footer {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.recipe-footer .btn {
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.recipe-footer .btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.recipe-footer .btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+
 .comment-widgets .comment-row:last-child {
   border-bottom: 0px
 }
