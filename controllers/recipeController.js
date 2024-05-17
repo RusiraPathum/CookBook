@@ -92,16 +92,25 @@ const deleteRecipe = async (req, res) => {
   }
 };
 
+// controllers/recipeController.js
+
+
 // Update recipe status method
 const updateRecipeStatus = async (req, res) => {
   try {
     const { id } = req.params;
-    const updatedRecipe = await Recipe.updateRecipeStatusById(id, false); // Change status to false
+    const recipe = await Recipe.getRecipeById(id);
 
-    if (!updatedRecipe) {
+    if (!recipe) {
       res.status(404);
       throw new Error(`Cannot find any recipe with ID ${id}`);
     }
+
+    // Toggle the status
+    const newStatus = !recipe.status;
+
+    // Update the status in the database
+    const updatedRecipe = await Recipe.updateRecipeStatusById(id, newStatus);
 
     res.status(200).json(updatedRecipe);
   } catch (error) {
@@ -110,11 +119,22 @@ const updateRecipeStatus = async (req, res) => {
   }
 };
 
+// Controller method to get the count of active recipes
+const getActiveRecipeCount = async (req, res, next) => {
+  try {
+      const activeRecipeCount = await Recipe.countActiveRecipes();
+      res.json({ activeRecipeCount });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 module.exports = {
-  updateRecipeStatus,
   createRecipe,
   getAllRecipes,
   getRecipe,
   updateRecipe,
   deleteRecipe,
+  getActiveRecipeCount,
+  updateRecipeStatus,
 };

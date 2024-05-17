@@ -26,7 +26,7 @@
     <header class="topbar" data-navbarbg="skin5">
       <nav class="navbar top-navbar navbar-expand-md navbar-dark">
         <div class="navbar-header" data-logobg="skin5">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="dashboard.html">
             <b class="logo-icon ps-2">
             </b>
             <span class="logo-text ms-2">
@@ -100,7 +100,7 @@
         <nav class="sidebar-nav">
           <ul id="sidebarnav" class="pt-4">
             <li class="sidebar-item">
-              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false"><i
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html" aria-expanded="false"><i
                   class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a>
             </li>
             <li class="sidebar-item">
@@ -126,9 +126,9 @@
             <div class="card card-hover">
               <div class="box bg-cyan text-center">
                 <h1 class="font-light text-white">
-                  <i class="mdi mdi-view-dashboard"></i>
+                  <i class="mdi mdi-blur-linear"></i>
                 </h1>
-                <h6 class="text-white">Recipes</h6>
+                <h6 class="text-white">Recipes <span id="activeRecipeCount"></span></h6>
               </div>
             </div>
           </div>
@@ -156,9 +156,9 @@
             <div class="card card-hover">
               <div class="box bg-danger text-center">
                 <h1 class="font-light text-white">
-                  <i class="mdi mdi-border-outside"></i>
+                  <i class="fas fa-user"></i>
                 </h1>
-                <h6 class="text-white">Tables</h6>
+                <h6 class="text-white">Users</h6>
               </div>
             </div>
           </div>
@@ -254,6 +254,7 @@
   <script src="../assets/libs/flot/jquery.flot.crosshair.js"></script>
   <script src="../assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
   <script src="../dist/js/pages/chart/chart-page-init.js"></script>
+  <script src="../js/dashboard.js"></script>
 </body>
 
 </html>

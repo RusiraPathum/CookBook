@@ -2,6 +2,9 @@ let express = require('express');
 let router = express.Router();
 let recipeController = require('../controllers/recipeController');
 
+// Route to get the count of active recipes
+router.get('/count', recipeController.getActiveRecipeCount);
+
 //Create recipe route
 router.post('/create', recipeController.createRecipe);
 

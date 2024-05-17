@@ -7,7 +7,7 @@ $(document).ready(function () {
 function loadRecipes() {
     $.ajax({
       type: "GET",
-      url: "http://localhost:3000/api/recipe", // Endpoint to fetch recipes
+      url: "http://localhost:3000/api/recipe",
       success: function (response) {
         // Clear existing table rows
         $("#recipeTable tbody").empty();
@@ -19,10 +19,8 @@ function loadRecipes() {
   
           // Populate the table cells with recipe data
           $("<td>").text(recipe.title).appendTo(row);
-          $("<td>").text(recipe.description).appendTo(row);
           $("<td>").text(recipe.ingredients).appendTo(row);
-          $("<td>").text(recipe.instructions).appendTo(row);
-          
+  
           // Add the status column with appropriate styling
           var statusCell = $("<td>");
           if (recipe.status) {
@@ -40,43 +38,35 @@ function loadRecipes() {
             .appendTo(imageCell);
           imageCell.appendTo(row);
   
-          // Create action buttons (Edit, Change Status, Delete)
-          var actions = $("<td>").addClass("action-buttons"); // Add a class for styling
+          // Create action buttons (Edit, Change Status, Delete, View)
+          var actions = $("<td>").addClass("action-buttons");
           
+          // Create the view button with the appropriate data attribute
+          var viewButton = $("<button>")
+            .addClass("btn btn-info btn-sm mr-1 text-white view-recipe")
+            .text("View");
+          viewButton.attr("data-recipe-id", recipe._id); // Add recipe ID as data attribute
+          viewButton.appendTo(actions); // Append view button to actions
+  
           // Create the change status button with the appropriate data attribute
           var changeStatusButton = $("<button>")
             .addClass("btn btn-success btn-sm mr-1 text-white change-status")
             .text("Change Status");
-  
-          // Check if recipe._id exists and is not undefined before setting data attribute
-          if (recipe._id) {
-            changeStatusButton.attr("data-recipe-id", recipe._id); // Add recipe ID as data attribute
-          }
-  
+          changeStatusButton.attr("data-recipe-id", recipe._id); // Add recipe ID as data attribute
           changeStatusButton.appendTo(actions); // Append change status button to actions
   
           // Create the edit button with the appropriate data attribute
           var editButton = $("<button>")
             .addClass("btn btn-cyan btn-sm mr-1 text-white edit-recipe")
             .text("Edit");
-  
-          // Check if recipe._id exists and is not undefined before setting data attribute
-          if (recipe._id) {
-            editButton.attr("data-recipe-id", recipe._id); // Add recipe ID as data attribute
-          }
-  
+          editButton.attr("data-recipe-id", recipe._id); // Add recipe ID as data attribute
           editButton.appendTo(actions); // Append edit button to actions
   
           // Create the delete button with the appropriate data attribute
           var deleteButton = $("<button>")
             .addClass("btn btn-danger btn-sm text-white delete-recipe")
             .text("Delete");
-  
-          // Check if recipe._id exists and is not undefined before setting data attribute
-          if (recipe._id) {
-            deleteButton.attr("data-recipe-id", recipe._id); // Add recipe ID as data attribute
-          }
-  
+          deleteButton.attr("data-recipe-id", recipe._id); // Add recipe ID as data attribute
           deleteButton.appendTo(actions); // Append delete button to actions
   
           // Append the action buttons to the table row
@@ -186,56 +176,71 @@ $(document).on("click", ".delete-recipe", function () {
 
 // Handle click event for editing a recipe
 $(document).on("click", ".edit-recipe", function () {
-  var recipeId = $(this).attr("data-recipe-id");
-  // Fetch the recipe data from the server
-  $.ajax({
-    type: "GET",
-    url: "http://localhost:3000/api/recipe/" + recipeId,
-    success: function (response) {
-      // Populate the modal with the recipe data
-      $("#editTitle").val(response.recipe.title);
-      $("#editDescription").val(response.recipe.description);
-      $("#editIngredients").val(response.recipe.ingredients);
-      $("#editInstructions").val(response.recipe.instructions);
-      $("#editRecipeId").val(response.recipe._id);
-      // Show the modal
-      $("#editRecipeModal").modal("show");
-    },
-    error: function (error) {
-      console.error("Error:", error);
-      alert("Failed to fetch recipe data.");
-    },
+    var recipeId = $(this).attr("data-recipe-id");
+    // Fetch the recipe data from the server
+    $.ajax({
+      type: "GET",
+      url: "http://localhost:3000/api/recipe/" + recipeId,
+      success: function (response) {
+        // Populate the modal with the recipe data
+        $("#editTitle").val(response.recipe.title);
+        $("#editDescription").val(response.recipe.description);
+        $("#editIngredients").val(response.recipe.ingredients);
+        $("#editInstructions").val(response.recipe.instructions);
+        $("#editRecipeId").val(response.recipe._id);
+        
+        // Display the current image
+        var currentImage = response.recipe.imageUrl;
+        if (currentImage) {
+          $("#editCurrentImage").attr("src", currentImage);
+        } else {
+          // If no image available, display a placeholder or hide the image element
+          $("#editCurrentImage").attr("src", ""); // Set src to empty string or placeholder image URL
+        }
+  
+        // Show the modal
+        $("#editRecipeModal").modal("show");
+      },
+      error: function (error) {
+        console.error("Error:", error);
+        alert("Failed to fetch recipe data.");
+      },
+    });
   });
-});
-
+  
 // Handle form submission for editing a recipe
 $("#editRecipeForm").submit(function (event) {
-  event.preventDefault();
-  var formData = $(this).serialize();
-  var recipeId = $("#editRecipeId").val();
-  $.ajax({
-    type: "PUT",
-    url: "http://localhost:3000/api/recipe/update/" + recipeId,
-    data: formData,
-    success: function (response) {
-      // If edit is successful, reload the recipes
-      loadRecipes();
-      // Close the modal
-      $("#editRecipeModal").modal("hide");
-      Swal.fire({
-        icon: "success",
-        title: "Recipe updated successfully!",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    },
-    error: function (error) {
-      console.error("Error:", error);
-      alert("Failed to update recipe.");
-    },
+    event.preventDefault();
+  
+    // Create FormData object to handle file uploads
+    var formData = new FormData(this);
+    var recipeId = $("#editRecipeId").val();
+  
+    $.ajax({
+      type: "PUT",
+      url: "http://localhost:3000/api/recipe/update/" + recipeId,
+      data: formData,
+      processData: false, // Prevent jQuery from automatically processing the FormData object
+      contentType: false, // Prevent jQuery from automatically setting the Content-Type header
+      success: function (response) {
+        // If edit is successful, reload the recipes
+        loadRecipes();
+        // Close the modal
+        $("#editRecipeModal").modal("hide");
+        Swal.fire({
+          icon: "success",
+          title: "Recipe updated successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      },
+      error: function (error) {
+        console.error("Error:", error);
+        alert("Failed to update recipe.");
+      },
+    });
   });
-});
-
+  
 $(document).on("click", ".change-status", function () {
     var recipeId = $(this).data("recipe-id");
   
@@ -265,6 +270,30 @@ $(document).on("click", ".change-status", function () {
           },
         });
       }
+    });
+  });
+  
+// Handle click event for viewing a single recipe
+$(document).on("click", ".view-recipe", function () {
+    var recipeId = $(this).attr("data-recipe-id");
+    // Fetch the recipe data from the server
+    $.ajax({
+      type: "GET",
+      url: "http://localhost:3000/api/recipe/" + recipeId,
+      success: function (response) {
+        // Display the recipe details in the view modal
+        $("#viewTitle").text(response.recipe.title);
+        $("#viewDescription").text(response.recipe.description);
+        $("#viewIngredients").text(response.recipe.ingredients);
+        $("#viewInstructions").text(response.recipe.instructions);
+        $("#viewImage").attr("src", response.recipe.imageUrl);
+        // Show the view modal
+        $("#viewRecipeModal").modal("show");
+      },
+      error: function (error) {
+        console.error("Error:", error);
+        alert("Failed to fetch recipe data.");
+      },
     });
   });
   

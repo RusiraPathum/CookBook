@@ -88,4 +88,16 @@ Recipe.updateRecipeStatusById = async (id, status) => {
   }
 };
 
+// Define a static method to count the number of active recipes
+Recipe.countActiveRecipes = async function() {
+  try {
+      // Count the number of documents (recipes) where the 'active' field is true
+      const activeRecipeCount = await this.countDocuments({ status: true });
+      return activeRecipeCount;
+  } catch (error) {
+      // If there's an error, throw it
+      throw error;
+  }
+};
+
 module.exports = Recipe;

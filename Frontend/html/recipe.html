@@ -32,7 +32,7 @@
         <header class="topbar" data-navbarbg="skin5">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
                 <div class="navbar-header" data-logobg="skin5">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="dashboard.html">
                         <b class="logo-icon ps-2">
                         </b>
                         <span class="logo-text ms-2">
@@ -113,7 +113,7 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="pt-4">
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
                                 aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                                     class="hide-menu">Dashboard</span></a>
                         </li>
@@ -149,7 +149,7 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
+                        <div class="card p-2">
                             <div class="card-body row">
                                 <div class="col-10">
                                 </div>
@@ -164,9 +164,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Title</th>
-                                        <th scope="col">Description</th>
                                         <th scope="col">Ingredients</th>
-                                        <th scope="col">Instructions</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Image</th>
                                         <th scope="col">Action</th>
@@ -254,7 +252,8 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="editRecipeForm">
+                            <form id="editRecipeForm" class="form-horizontal" enctype="multipart/form-data">
+                                <input type="hidden" id="editRecipeId" name="id">
                                 <div class="mb-3">
                                     <label for="editTitle" class="form-label">Title</label>
                                     <input type="text" class="form-control" id="editTitle" name="title">
@@ -271,9 +270,74 @@
                                     <label for="editInstructions" class="form-label">Instructions</label>
                                     <textarea class="form-control" id="editInstructions" name="instructions"></textarea>
                                 </div>
-                                <input type="hidden" id="editRecipeId">
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="editImage" class="form-label">Image</label>
+                                            <input type="file" class="form-control" id="editImage" name="image"
+                                                accept="image/*">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <img style="width: 50%;" id="editCurrentImage" src="" alt="Current Image"
+                                                class="img-fluid">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
                             </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" form="editRecipeForm" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View Recipe Modal -->
+            <div class="modal fade" id="viewRecipeModal" tabindex="-1" aria-labelledby="viewRecipeModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="viewRecipeModalLabel">View Recipe</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6 row">
+                                    <label for="viewTitle" class="form-label">Title:</label>
+                                    <p id="viewTitle"></p>
+                                </div>
+                                <div class="col-md-6 row">
+                                    <label for="viewDescription" class="form-label">Description:</label>
+                                    <p id="viewDescription"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 row">
+                                    <label for="viewIngredients" class="form-label">Ingredients:</label>
+                                    <p id="viewIngredients"></p>
+                                </div>
+                                <div class="col-md-6 row">
+                                    <label for="viewInstructions" class="form-label">Instructions:</label>
+                                    <p id="viewInstructions"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="viewImage" class="form-label">Image:</label>
+                                    <img style="border-radius: 10px;" id="viewImage" class="img-fluid" alt="Recipe Image">
+                                </div>
+                            </div>
+                            <!-- Add more fields here as needed -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
