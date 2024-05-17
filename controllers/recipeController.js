@@ -129,6 +129,25 @@ const getActiveRecipeCount = async (req, res, next) => {
   }
 };
 
+// Controller method to get the count of inactive recipes
+const getInactiveRecipeCount = async (req, res, next) => {
+  try {
+      const inactiveRecipeCount = await Recipe.countInactiveRecipes();
+      res.json({ inactiveRecipeCount });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+// const getMostRecentRecipe = async (req, res) => {
+//   try {
+//     const recentRecipe = await Recipe.findOne().sort({ createdAt: -1 }).exec();
+//     res.json({ recipe: recentRecipe });
+//   } catch (error) {
+//     res.status(500).json({ message: 'Failed to fetch the most recent recipe', error });
+//   }
+// };
+
 module.exports = {
   createRecipe,
   getAllRecipes,
@@ -136,5 +155,7 @@ module.exports = {
   updateRecipe,
   deleteRecipe,
   getActiveRecipeCount,
+  getInactiveRecipeCount,
   updateRecipeStatus,
+  // getMostRecentRecipe,
 };

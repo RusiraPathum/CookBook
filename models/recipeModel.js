@@ -100,4 +100,16 @@ Recipe.countActiveRecipes = async function() {
   }
 };
 
+// Define a static method to count the number of inactive recipes
+Recipe.countInactiveRecipes = async function() {
+  try {
+      // Count the number of documents (recipes) where the 'active' field is true
+      const inactiveRecipeCount = await this.countDocuments({ status: false });
+      return inactiveRecipeCount;
+  } catch (error) {
+      // If there's an error, throw it
+      throw error;
+  }
+};
+
 module.exports = Recipe;
