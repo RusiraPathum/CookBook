@@ -51,10 +51,6 @@
                     </ul>
                     <ul class="navbar-nav float-end">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="mdi mdi-bell font-24"></i>
-                            </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -118,10 +114,21 @@
                                     class="hide-menu">Dashboard</span></a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="recipe.html"
-                                aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
-                                    class="hide-menu">Recipe</span></a>
-                        </li>
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="user.html" aria-expanded="false"><i
+                                class="fas fa-user"></i><span class="hide-menu">Users</span></a>
+                          </li>
+                          <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="recipe.html" aria-expanded="false"><i
+                                class="mdi mdi-blur-linear"></i><span class="hide-menu">Recipes</span></a>
+                          </li>
+                          <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="mealPlans.html" aria-expanded="false"><i
+                                class="mdi mdi-chart-areaspline"></i><span class="hide-menu">Meel Plans</span></a>
+                          </li>
+                          <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="feedbacks.html" aria-expanded="false"><i
+                                class="mdi mdi-collage"></i><span class="hide-menu">FeedBack</span></a>
+                          </li>
                     </ul>
                 </nav>
             </div>
@@ -190,45 +197,51 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="recipe-form" class="form-horizontal" enctype="multipart/form-data">
+                            <form id="recipe-form" class="form-horizontal needs-validation" enctype="multipart/form-data" novalidate>
                                 <div class="card-body">
                                     <div class="form-group row">
-                                        <label for="title"
-                                            class="col-sm-3 text-end control-label col-form-label">Title</label>
+                                        <label for="title" class="col-sm-3 text-end control-label col-form-label">Title</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="title" placeholder="Title Here"
-                                                required />
+                                            <input type="text" class="form-control" id="title" placeholder="Title Here" required />
+                                            <div class="invalid-feedback">
+                                                Please provide a title.
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="description"
-                                            class="col-sm-3 text-end control-label col-form-label">Description</label>
+                                        <label for="description" class="col-sm-3 text-end control-label col-form-label">Description</label>
                                         <div class="col-sm-9">
-                                            <textarea class="form-control" id="description"
-                                                placeholder="Description Here"></textarea>
+                                            <textarea class="form-control" id="description" placeholder="Description Here" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Please provide a description.
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="ingredients"
-                                            class="col-sm-3 text-end control-label col-form-label">Ingredients</label>
+                                        <label for="ingredients" class="col-sm-3 text-end control-label col-form-label">Ingredients</label>
                                         <div class="col-sm-9">
-                                            <textarea class="form-control" id="ingredients"
-                                                placeholder="Ingredients Here" required></textarea>
+                                            <textarea class="form-control" id="ingredients" placeholder="Ingredients Here" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Please provide ingredients.
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="instructions"
-                                            class="col-sm-3 text-end control-label col-form-label">Instructions</label>
+                                        <label for="instructions" class="col-sm-3 text-end control-label col-form-label">Instructions</label>
                                         <div class="col-sm-9">
-                                            <textarea class="form-control" id="instructions"
-                                                placeholder="Instructions Here" required></textarea>
+                                            <textarea class="form-control" id="instructions" placeholder="Instructions Here" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Please provide instructions.
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="image"
-                                            class="col-sm-3 text-end control-label col-form-label">Image</label>
+                                        <label for="image" class="col-sm-3 text-end control-label col-form-label">Image</label>
                                         <div class="col-sm-9">
-                                            <input type="file" class="form-control" id="image" required />
+                                            <input type="file" class="form-control" id="image" required accept="image/*" />
+                                            <div class="invalid-feedback">
+                                                Please upload a valid image.
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -238,65 +251,66 @@
                                     </div>
                                 </div>
                             </form>
+                            
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="modal fade" id="editRecipeModal" tabindex="-1" aria-labelledby="editRecipeModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="editRecipeModal" tabindex="-1" aria-labelledby="editRecipeModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="editRecipeModalLabel">Edit Recipe</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="editRecipeForm" class="form-horizontal" enctype="multipart/form-data">
-                                <input type="hidden" id="editRecipeId" name="id">
-                                <div class="mb-3">
-                                    <label for="editTitle" class="form-label">Title</label>
-                                    <input type="text" class="form-control" id="editTitle" name="title">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editDescription" class="form-label">Description</label>
-                                    <textarea class="form-control" id="editDescription" name="description"></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editIngredients" class="form-label">Ingredients</label>
-                                    <textarea class="form-control" id="editIngredients" name="ingredients"></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editInstructions" class="form-label">Instructions</label>
-                                    <textarea class="form-control" id="editInstructions" name="instructions"></textarea>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="mb-3">
-                                            <label for="editImage" class="form-label">Image</label>
-                                            <input type="file" class="form-control" id="editImage" name="image"
-                                                accept="image/*">
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="mb-3">
-                                            <img style="width: 50%;" id="editCurrentImage" src="" alt="Current Image"
-                                                class="img-fluid">
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" form="editRecipeForm" class="btn btn-primary">Save changes</button>
-                        </div>
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="editRecipeModalLabel">Edit Recipe</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
+                      <form id="editRecipeForm" class="form-horizontal needs-validation" enctype="multipart/form-data" novalidate>
+                        <input type="hidden" id="editRecipeId" name="id">
+                        <div class="mb-3">
+                          <label for="editTitle" class="form-label">Title</label>
+                          <input type="text" class="form-control" id="editTitle" name="title" required>
+                          <div class="invalid-feedback">Please provide a title.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="editDescription" class="form-label">Description</label>
+                          <textarea class="form-control" id="editDescription" name="description" required></textarea>
+                          <div class="invalid-feedback">Please provide a description.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="editIngredients" class="form-label">Ingredients</label>
+                          <textarea class="form-control" id="editIngredients" name="ingredients" required></textarea>
+                          <div class="invalid-feedback">Please provide ingredients.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="editInstructions" class="form-label">Instructions</label>
+                          <textarea class="form-control" id="editInstructions" name="instructions" required></textarea>
+                          <div class="invalid-feedback">Please provide instructions.</div>
+                        </div>
+                        <!-- <div class="row">
+                          <div class="col-6">
+                            <div class="mb-3">
+                              <label for="editImage" class="form-label">Image</label>
+                              <input type="file" class="form-control" id="editImage" name="image" accept="image/*">
+                              <div class="invalid-feedback">Please upload a valid image.</div>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="mb-3">
+                              <img style="width: 50%;" id="editCurrentImage" src="" alt="Current Image" class="img-fluid">
+                            </div>
+                          </div>
+                        </div> -->
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" form="editRecipeForm" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
                 </div>
-            </div>
+              </div>
+              
 
             <!-- View Recipe Modal -->
             <div class="modal fade" id="viewRecipeModal" tabindex="-1" aria-labelledby="viewRecipeModalLabel"

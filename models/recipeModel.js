@@ -112,4 +112,17 @@ Recipe.countInactiveRecipes = async function() {
   }
 };
 
+// Model method to fetch recipe status data
+Recipe.getRecipeStatusChartData = async function() {
+  try {
+    const statusData = await Recipe.aggregate([
+      { $group: { _id: "$status", count: { $sum: 1 } } },
+      { $project: { _id: 0, status: "$_id", count: 1 } }
+    ]);
+    return statusData;
+  } catch (error) {
+    throw new Error("Failed to fetch recipe status data");
+  }
+};
+
 module.exports = Recipe;
