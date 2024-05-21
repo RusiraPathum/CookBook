@@ -5,6 +5,7 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const recipeRoute = require('./routes/recipeRoute');
+const feedbackRoute = require('./routes/feedbackRoute'); // Ensure the path is correct
 
 const app = express();
 
@@ -33,21 +34,20 @@ const upload = multer({ storage: storage });
 // Recipe route
 app.use('/api/recipe', upload.single('image'), recipeRoute);
 
+// Feedback route
+app.use('/api/feedback', feedbackRoute);
+
 let MONGO_URL = process.env.MONGO_URL; 
 let PORT = process.env.PORT || 3000; 
 
-mongoose.set("strictQuery", false)
-mongoose.
-connect(MONGO_URL)
-.then(() => {
-    console.log('connected to MongoDB')
-    app.listen(PORT, ()=> {
-        console.log(`Node API app is running on port ${PORT}`)
+mongoose.set("strictQuery", false);
+mongoose.connect(MONGO_URL)
+    .then(() => {
+        console.log('connected to MongoDB');
+        app.listen(PORT, () => {
+            console.log(`Node API app is running on port ${PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.log(error);
     });
-}).catch((error) => {
-    console.log(error)
-})
-
-// app.listen(PORT, () => {
-//     console.log(`Node API app is running on port ${PORT}`);
-//   });
