@@ -139,6 +139,16 @@ const getInactiveRecipeCount = async (req, res, next) => {
   }
 };
 
+// Controller method to fetch recipe status data
+const getRecipeStatusData = async function(req, res) {
+  try {
+    const statusData = await Recipe.getRecipeStatusData();
+    res.json({ success: true, data: statusData });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
 // const getMostRecentRecipe = async (req, res) => {
 //   try {
 //     const recentRecipe = await Recipe.findOne().sort({ createdAt: -1 }).exec();
@@ -157,5 +167,6 @@ module.exports = {
   getActiveRecipeCount,
   getInactiveRecipeCount,
   updateRecipeStatus,
+  getRecipeStatusData,
   // getMostRecentRecipe,
 };

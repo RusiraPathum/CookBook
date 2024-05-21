@@ -33,6 +33,10 @@ router.delete('/delete/:id', function (req, res) {
 
 router.put('/update-status/:id', recipeController.updateRecipeStatus);
 
+// Route to fetch recipe status data
+router.get('/chart-status', recipeController.getRecipeStatusData);
+
+
 // router.get('/recent', recipeController.getMostRecentRecipe);
 
 

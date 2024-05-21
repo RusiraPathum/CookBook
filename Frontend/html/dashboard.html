@@ -12,6 +12,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png" />
   <link href="../assets/libs/flot/css/float-chart.css" rel="stylesheet" />
   <link href="../dist/css/style.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -45,10 +46,6 @@
           </ul>
           <ul class="navbar-nav float-end">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <i class="mdi mdi-bell font-24"></i>
-              </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -104,8 +101,20 @@
                 aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a>
             </li>
             <li class="sidebar-item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="user.html" aria-expanded="false"><i
+                  class="fas fa-user"></i><span class="hide-menu">Users</span></a>
+            </li>
+            <li class="sidebar-item">
               <a class="sidebar-link waves-effect waves-dark sidebar-link" href="recipe.html" aria-expanded="false"><i
-                  class="mdi mdi-blur-linear"></i><span class="hide-menu">Recipe</span></a>
+                  class="mdi mdi-blur-linear"></i><span class="hide-menu">Recipes</span></a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="mealPlans.html" aria-expanded="false"><i
+                  class="mdi mdi-chart-areaspline"></i><span class="hide-menu">Meel Plans</span></a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="feedbacks.html" aria-expanded="false"><i
+                  class="mdi mdi-collage"></i><span class="hide-menu">FeedBack</span></a>
             </li>
           </ul>
         </nav>
@@ -187,7 +196,7 @@
         </div> -->
         
 
-        <div class="row mt-5">
+        <!-- <div class="row mt-5">
           <div class="col-md-12">
             <div class="card">
               <div class="card-body">
@@ -249,6 +258,30 @@
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        
+        <div class="row mt-5">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-md-flex align-items-center">
+                  <div>
+                    <h4 class="card-title">Site Analysis</h4>
+                    <h5 class="card-subtitle">Overview of Latest Month</h5>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-3">
+                  <canvas id="statusBarChart" width="200" height="200"></canvas>
+                  </div>
+                  <div class="col-6">
+                    <!-- <canvas id="statusBarChart" width="400" height="400"></canvas> -->
+                  </div>
+
                 </div>
               </div>
             </div>
