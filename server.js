@@ -1,53 +1,53 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require('body-parser');
+const multer = require("multer");
+const path = require("path");
+const cors = require("cors");
+const recipeRoute = require('./routes/recipeRoute');
 
-let app = express();
-let port = process.env.PORT || 3000; 
-app.use(bodyParser.json());
+const app = express();
 
-// Connect to MongoDB database
-mongoose.connect('mongodb://localhost/cookbook', { useNewUrlParser: true, useUnifiedTopology: true });
-const db = mongoose.connection;
+// Middleware to serve static files from the 'uploads' directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Define Feedback schema
-const feedbackSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  recipeId: { type: mongoose.Schema.Types.ObjectId, required: true },
-  rating: { type: Number, min: 1, max: 5, required: true },
-  comment: String,
-  createdAt: { type: Date, default: Date.now }
-});
-const Feedback = mongoose.model('Feedback', feedbackSchema);
+// Middleware to parse JSON bodies
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
+// Use cors middleware
+app.use(cors());
 
-// Get user feedback
-app.get('/feedback/:recipeId', (req, res) => {
-  const recipeId = req.params.recipeId;
-  Feedback.find({ recipeId }, (err, feedback) => {
-      if (err) {
-          res.status(500).json({ error: 'Internal server error' });
-      } else if (!feedback) {
-          res.status(404).json({ error: 'Feedback not found for this recipe' });
-      } else {
-          res.status(200).json(feedback);
-      }
-  });
+// Multer configuration for file uploads
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  }
 });
 
-// Post user feedback
-app.post('/feedback', (req, res) => {
-  const { userId, recipeId, rating, comment } = req.body;
-  const newFeedback = new Feedback({ userId, recipeId, rating, comment });
-  newFeedback.save((err, feedback) => {
-      if (err) {
-          res.status(400).json({ error: err.message });
-      } else {
-          res.status(201).json(feedback);
-      }
-  });
-});
+const upload = multer({ storage: storage });
 
-app.listen(port, () => {
-    console.log("server started");
-});
+// Recipe route
+app.use('/api/recipe', upload.single('image'), recipeRoute);
+
+let MONGO_URL = process.env.MONGO_URL; 
+let PORT = process.env.PORT || 3000; 
+
+mongoose.set("strictQuery", false)
+mongoose.
+connect(MONGO_URL)
+.then(() => {
+    console.log('connected to MongoDB')
+    app.listen(PORT, ()=> {
+        console.log(`Node API app is running on port ${PORT}`)
+    });
+}).catch((error) => {
+    console.log(error)
+})
+
+// app.listen(PORT, () => {
+//     console.log(`Node API app is running on port ${PORT}`);
+//   });
