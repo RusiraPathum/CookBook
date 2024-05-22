@@ -24,5 +24,12 @@ Feedback.createFeedback = async (feedbackData) => {
     }
   };
 
-  
+// Logic for deleting a feedback by ID
+Feedback.deleteFeedbackById = async (id) => {
+    try {
+      return await Feedback.findByIdAndDelete(id);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
 module.exports = Feedback;
