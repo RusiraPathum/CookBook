@@ -36,7 +36,20 @@ const deleteFeedback = async (req, res) => {
     }
   };
 
+  // Get all Feedbacks method
+const getAllFeedbacks = async (req, res) => {
+    try {
+      const Feedbacks = await Feedback.getAllFeedbacks();
+      res.status(200).json({ Feedbacks });
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).json({ message: error.message });
+    }
+  };
+  
+
 module.exports = {
     createFeedback,
     deleteFeedback,
+    getAllFeedbacks,
 };
