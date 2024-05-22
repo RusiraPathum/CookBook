@@ -10,4 +10,9 @@ router.delete('/delete/:id', function (req, res) {
     feedbackController.deleteFeedback(req, res);
 });
 
+//Get all feedback route
+router.get('/', function (req, res) {
+    feedbackController.getAllFeedbacks(req, res);
+});
+
 module.exports = router;
