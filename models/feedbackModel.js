@@ -32,4 +32,14 @@ Feedback.deleteFeedbackById = async (id) => {
       throw new Error(error.message);
     }
   };
+
+  // Logic for fetching all Feedbacks
+Feedback.getAllFeedbacks = async () => {
+    try {
+      return await Feedback.find({});
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
+
 module.exports = Feedback;
