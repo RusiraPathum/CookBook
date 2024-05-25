@@ -17,6 +17,7 @@ const createRecipe = async (req, res) => {
       ingredients,
       instructions,
       imageUrl,
+      userId: req.user.userId,
     };
 
     const recipe = await Recipe.createRecipe(recipeData);

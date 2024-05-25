@@ -4,63 +4,130 @@ $(document).ready(function () {
 });
 
 // Function to load recipes
+// function loadRecipes() {
+//   $.ajax({
+//     type: "GET",
+//     url: "http://localhost:3000/api/recipe",
+//     success: function (response) {
+//       $("#recipeTable tbody").empty();
+
+//       response.recipes.forEach(function (recipe) {
+//         var row = $("<tr>");
+
+//         $("<td>").text(recipe.title).appendTo(row);
+//         $("<td>").text(recipe.ingredients).appendTo(row);
+
+//         var statusCell = $("<td>");
+//         if (recipe.status) {
+//           statusCell.text("Active").addClass("text-success");
+//         } else {
+//           statusCell.text("Inactive").addClass("text-danger");
+//         }
+//         statusCell.appendTo(row);
+
+//         var imageCell = $("<td>");
+//         $("<img>")
+//           .attr("src", recipe.imageUrl)
+//           .addClass("recipe-image")
+//           .appendTo(imageCell);
+//         imageCell.appendTo(row);
+
+//         var actions = $("<td>").addClass("action-buttons");
+
+//         var viewButton = $("<button>")
+//           .addClass("btn btn-info btn-sm mr-1 text-white view-recipe")
+//           .text("View");
+//         viewButton.attr("data-recipe-id", recipe._id);
+//         viewButton.appendTo(actions);
+
+//         var changeStatusButton = $("<button>")
+//           .addClass("btn btn-success btn-sm mr-1 text-white change-status")
+//           .text("Change Status");
+//         changeStatusButton.attr("data-recipe-id", recipe._id);
+//         changeStatusButton.appendTo(actions);
+
+//         var editButton = $("<button>")
+//           .addClass("btn btn-cyan btn-sm mr-1 text-white edit-recipe")
+//           .text("Edit");
+//         editButton.attr("data-recipe-id", recipe._id);
+//         editButton.appendTo(actions);
+
+//         var deleteButton = $("<button>")
+//           .addClass("btn btn-danger btn-sm text-white delete-recipe")
+//           .text("Delete");
+//         deleteButton.attr("data-recipe-id", recipe._id);
+//         deleteButton.appendTo(actions);
+
+//         actions.appendTo(row);
+
+//         row.appendTo("#recipeTable tbody");
+//       });
+//     },
+//     error: function (error) {
+//       console.error("Error:", error);
+//       alert("Failed to load recipes.");
+//     },
+//   });
+// }
+
 function loadRecipes() {
   $.ajax({
     type: "GET",
     url: "http://localhost:3000/api/recipe",
     success: function (response) {
-      $("#recipeTable tbody").empty();
+      $("#recipeContainer").empty(); // Assuming you have a container with this ID to hold the cards
+
+      var token = localStorage.getItem("token");
+      var decodedToken = jwt_decode(token);
+      var loggedInUserId = decodedToken.userId;
 
       response.recipes.forEach(function (recipe) {
-        var row = $("<tr>");
+        var card = $(`
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <div class="el-card-item">
+                <div class="el-card-avatar el-overlay-1">
+                  <img src="${recipe.imageUrl}" alt="recipe" />
+                  <div class="el-overlay">
+                    <ul class="list-style-none el-info">
+                      <li class="el-item">
+                        <a class="btn default btn-outline image-popup-vertical-fit el-link" href="${recipe.imageUrl}">
+                          <i class="mdi mdi-magnify-plus"></i>
+                        </a>
+                      </li>
+                      
+                    </ul>
+                  </div>
+                </div>
+                <div class="el-card-content">
+                  <h4 class="mb-0">${recipe.title}</h4>
+                  <span class="text-muted">${recipe.ingredients}</span>
+                  <div class="mt-3">
+                  <button class="btn btn-success btn-sm text-white view-recipe" data-recipe-id="${recipe._id}">View</button>
+                    ${
+                      recipe.userId === loggedInUserId
+                        ? `
+                          <button class="btn btn-cyan btn-sm mr-1 text-white edit-recipe" data-recipe-id="${recipe._id}">Edit</button>
+                          <button class="btn btn-danger btn-sm text-white delete-recipe" data-recipe-id="${recipe._id}">Delete</button>
+                        `
+                        : ''
+                    }
+                    ${
+                      recipe.userId !== loggedInUserId
+                        ? `
+                        <button class="btn btn-info btn-sm text-white feedback-recipe" data-recipe-id="${recipe._id}">Feedback</button>
+                        `
+                        : ''
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `);
 
-        $("<td>").text(recipe.title).appendTo(row);
-        $("<td>").text(recipe.ingredients).appendTo(row);
-
-        var statusCell = $("<td>");
-        if (recipe.status) {
-          statusCell.text("Active").addClass("text-success");
-        } else {
-          statusCell.text("Inactive").addClass("text-danger");
-        }
-        statusCell.appendTo(row);
-
-        var imageCell = $("<td>");
-        $("<img>")
-          .attr("src", recipe.imageUrl)
-          .addClass("recipe-image")
-          .appendTo(imageCell);
-        imageCell.appendTo(row);
-
-        var actions = $("<td>").addClass("action-buttons");
-
-        var viewButton = $("<button>")
-          .addClass("btn btn-info btn-sm mr-1 text-white view-recipe")
-          .text("View");
-        viewButton.attr("data-recipe-id", recipe._id);
-        viewButton.appendTo(actions);
-
-        var changeStatusButton = $("<button>")
-          .addClass("btn btn-success btn-sm mr-1 text-white change-status")
-          .text("Change Status");
-        changeStatusButton.attr("data-recipe-id", recipe._id);
-        changeStatusButton.appendTo(actions);
-
-        var editButton = $("<button>")
-          .addClass("btn btn-cyan btn-sm mr-1 text-white edit-recipe")
-          .text("Edit");
-        editButton.attr("data-recipe-id", recipe._id);
-        editButton.appendTo(actions);
-
-        var deleteButton = $("<button>")
-          .addClass("btn btn-danger btn-sm text-white delete-recipe")
-          .text("Delete");
-        deleteButton.attr("data-recipe-id", recipe._id);
-        deleteButton.appendTo(actions);
-
-        actions.appendTo(row);
-
-        row.appendTo("#recipeTable tbody");
+        // Append the card to the container
+        $("#recipeContainer").append(card);
       });
     },
     error: function (error) {
@@ -69,6 +136,7 @@ function loadRecipes() {
     },
   });
 }
+
 
 $("#submit-recipe").click(function (event) {
   event.preventDefault();
@@ -103,6 +171,9 @@ $("#submit-recipe").click(function (event) {
     data: formData,
     contentType: false,
     processData: false,
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token") // Retrieve token from localStorage
+  },
     success: function (response) {
       $("#recipeModal").modal("hide");
 
@@ -297,4 +368,12 @@ $(document).on("click", ".view-recipe", function () {
       alert("Failed to fetch recipe data.");
     },
   });
+});
+
+$(document).on("click", ".feedback-recipe", function () {
+  var recipeId = $(this).attr("data-recipe-id");
+  console.log(recipeId);
+
+  $("#feedbackRecipeModal").modal("show");
+
 });

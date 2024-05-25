@@ -14,7 +14,7 @@ async function handleLoginForm(event) {
     });
 
     localStorage.setItem("token", response.token);
-    window.location.href = "dashboard.html";
+    window.location.href = "index.html";
   } catch (error) {
     alert(error.responseJSON.message);
   }

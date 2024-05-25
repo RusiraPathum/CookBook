@@ -32,11 +32,12 @@
         <header class="topbar" data-navbarbg="skin5">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
                 <div class="navbar-header" data-logobg="skin5">
-                    <a class="navbar-brand" href="dashboard.html">
+                    <a class="navbar-brand" href="index.html">
                         <b class="logo-icon ps-2">
                         </b>
                         <span class="logo-text ms-2">
-                            <img src="../assets/images/logo-text.png" alt="homepage" class="light-logo" />
+                            <img src="../assets/images/logo-text.png" alt="homepage" class="light-logo"
+                                style="width: 150px; height: 70px;" />
                         </span>
                     </a>
                     <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
@@ -92,26 +93,16 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="pt-4">
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
-                                aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
-                                    class="hide-menu">Dashboard</span></a>
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="recipe.html"
+                                aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
+                                    class="hide-menu">Recipes</span></a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="user.html" aria-expanded="false"><i
-                                class="fas fa-user"></i><span class="hide-menu">Users</span></a>
-                          </li>
-                          <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="recipe.html" aria-expanded="false"><i
-                                class="mdi mdi-blur-linear"></i><span class="hide-menu">Recipes</span></a>
-                          </li>
-                          <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="mealPlans.html" aria-expanded="false"><i
-                                class="mdi mdi-chart-areaspline"></i><span class="hide-menu">Meel Plans</span></a>
-                          </li>
-                          <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="feedbacks.html" aria-expanded="false"><i
-                                class="mdi mdi-collage"></i><span class="hide-menu">FeedBack</span></a>
-                          </li>
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="mealPlans.html"
+                                aria-expanded="false"><i class="mdi mdi-chart-areaspline"></i><span
+                                    class="hide-menu">Meel Plans</span></a>
+                        </li>
+
                     </ul>
                 </nav>
             </div>
@@ -121,18 +112,29 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Recipes Details</h4>
+                        <!-- <h4 class="page-title">Recipes Details</h4> -->
                     </div>
                 </div>
             </div>
 
             <div class="container-fluid">
+                <div class="row mb-5">
+                    <div class="text-end">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#recipeModal">
+                            Add Recipe
+                        </button>
+                    </div>
+                </div>
+                <div class="row el-element-overlay" id="recipeContainer">
+                </div>
+            </div>
+
+            <!-- <div class="container-fluid">
+                
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <!-- Button trigger modal -->
-
-
                         </div>
                     </div>
                 </div>
@@ -161,7 +163,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Table rows will be dynamically added here -->
                                 </tbody>
                             </table>
                         </div>
@@ -169,7 +170,7 @@
                 </div>
 
 
-            </div>
+            </div> -->
 
             <div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalLabel"
                 aria-hidden="true">
@@ -180,48 +181,59 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="recipe-form" class="form-horizontal needs-validation" enctype="multipart/form-data" novalidate>
+                            <form id="recipe-form" class="form-horizontal needs-validation"
+                                enctype="multipart/form-data" novalidate>
                                 <div class="card-body">
                                     <div class="form-group row">
-                                        <label for="title" class="col-sm-3 text-end control-label col-form-label">Title</label>
+                                        <label for="title"
+                                            class="col-sm-3 text-end control-label col-form-label">Title</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="title" placeholder="Title Here" required />
+                                            <input type="text" class="form-control" id="title" placeholder="Title Here"
+                                                required />
                                             <div class="invalid-feedback">
                                                 Please provide a title.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="description" class="col-sm-3 text-end control-label col-form-label">Description</label>
+                                        <label for="description"
+                                            class="col-sm-3 text-end control-label col-form-label">Description</label>
                                         <div class="col-sm-9">
-                                            <textarea class="form-control" id="description" placeholder="Description Here" required></textarea>
+                                            <textarea class="form-control" id="description"
+                                                placeholder="Description Here" required></textarea>
                                             <div class="invalid-feedback">
                                                 Please provide a description.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="ingredients" class="col-sm-3 text-end control-label col-form-label">Ingredients</label>
+                                        <label for="ingredients"
+                                            class="col-sm-3 text-end control-label col-form-label">Ingredients</label>
                                         <div class="col-sm-9">
-                                            <textarea class="form-control" id="ingredients" placeholder="Ingredients Here" required></textarea>
+                                            <textarea class="form-control" id="ingredients"
+                                                placeholder="Ingredients Here" required></textarea>
                                             <div class="invalid-feedback">
                                                 Please provide ingredients.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="instructions" class="col-sm-3 text-end control-label col-form-label">Instructions</label>
+                                        <label for="instructions"
+                                            class="col-sm-3 text-end control-label col-form-label">Instructions</label>
                                         <div class="col-sm-9">
-                                            <textarea class="form-control" id="instructions" placeholder="Instructions Here" required></textarea>
+                                            <textarea class="form-control" id="instructions"
+                                                placeholder="Instructions Here" required></textarea>
                                             <div class="invalid-feedback">
                                                 Please provide instructions.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="image" class="col-sm-3 text-end control-label col-form-label">Image</label>
+                                        <label for="image"
+                                            class="col-sm-3 text-end control-label col-form-label">Image</label>
                                         <div class="col-sm-9">
-                                            <input type="file" class="form-control" id="image" required accept="image/*" />
+                                            <input type="file" class="form-control" id="image" required
+                                                accept="image/*" />
                                             <div class="invalid-feedback">
                                                 Please upload a valid image.
                                             </div>
@@ -234,43 +246,48 @@
                                     </div>
                                 </div>
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="modal fade" id="editRecipeModal" tabindex="-1" aria-labelledby="editRecipeModalLabel" aria-hidden="true">
+            <div class="modal fade" id="editRecipeModal" tabindex="-1" aria-labelledby="editRecipeModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="editRecipeModalLabel">Edit Recipe</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <form id="editRecipeForm" class="form-horizontal needs-validation" enctype="multipart/form-data" novalidate>
-                        <input type="hidden" id="editRecipeId" name="id">
-                        <div class="mb-3">
-                          <label for="editTitle" class="form-label">Title</label>
-                          <input type="text" class="form-control" id="editTitle" name="title" required>
-                          <div class="invalid-feedback">Please provide a title.</div>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editRecipeModalLabel">Edit Recipe</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="mb-3">
-                          <label for="editDescription" class="form-label">Description</label>
-                          <textarea class="form-control" id="editDescription" name="description" required></textarea>
-                          <div class="invalid-feedback">Please provide a description.</div>
-                        </div>
-                        <div class="mb-3">
-                          <label for="editIngredients" class="form-label">Ingredients</label>
-                          <textarea class="form-control" id="editIngredients" name="ingredients" required></textarea>
-                          <div class="invalid-feedback">Please provide ingredients.</div>
-                        </div>
-                        <div class="mb-3">
-                          <label for="editInstructions" class="form-label">Instructions</label>
-                          <textarea class="form-control" id="editInstructions" name="instructions" required></textarea>
-                          <div class="invalid-feedback">Please provide instructions.</div>
-                        </div>
-                        <!-- <div class="row">
+                        <div class="modal-body">
+                            <form id="editRecipeForm" class="form-horizontal needs-validation"
+                                enctype="multipart/form-data" novalidate>
+                                <input type="hidden" id="editRecipeId" name="id">
+                                <div class="mb-3">
+                                    <label for="editTitle" class="form-label">Title</label>
+                                    <input type="text" class="form-control" id="editTitle" name="title" required>
+                                    <div class="invalid-feedback">Please provide a title.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editDescription" class="form-label">Description</label>
+                                    <textarea class="form-control" id="editDescription" name="description"
+                                        required></textarea>
+                                    <div class="invalid-feedback">Please provide a description.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editIngredients" class="form-label">Ingredients</label>
+                                    <textarea class="form-control" id="editIngredients" name="ingredients"
+                                        required></textarea>
+                                    <div class="invalid-feedback">Please provide ingredients.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editInstructions" class="form-label">Instructions</label>
+                                    <textarea class="form-control" id="editInstructions" name="instructions"
+                                        required></textarea>
+                                    <div class="invalid-feedback">Please provide instructions.</div>
+                                </div>
+                                <!-- <div class="row">
                           <div class="col-6">
                             <div class="mb-3">
                               <label for="editImage" class="form-label">Image</label>
@@ -284,16 +301,15 @@
                             </div>
                           </div>
                         </div> -->
-                      </form>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" form="editRecipeForm" class="btn btn-primary">Save changes</button>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="submit" form="editRecipeForm" class="btn btn-primary">Save changes</button>
-                    </div>
-                  </div>
                 </div>
-              </div>
-              
+            </div>
 
             <!-- View Recipe Modal -->
             <div class="modal fade" id="viewRecipeModal" tabindex="-1" aria-labelledby="viewRecipeModalLabel"
@@ -305,6 +321,12 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12 mb-5 text-center">
+                                    <img style="border-radius: 10px;" id="viewImage" class="img-fluid"
+                                        alt="Recipe Image">
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-6 row">
                                     <label for="viewTitle" class="form-label">Title:</label>
@@ -325,13 +347,26 @@
                                     <p id="viewInstructions"></p>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label for="viewImage" class="form-label">Image:</label>
-                                    <img style="border-radius: 10px;" id="viewImage" class="img-fluid" alt="Recipe Image">
-                                </div>
-                            </div>
+                            
                             <!-- Add more fields here as needed -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal fade" id="feedbackRecipeModal" tabindex="-1" aria-labelledby="feedbackRecipeModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="feedbackRecipeModalLabel">Feedback Recipe</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -366,6 +401,8 @@
     <script src="../assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assets/libs/quill/dist/quill.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+
     <script src="../js/recipe.js"></script>
     <script>
         $(".select2").select2();

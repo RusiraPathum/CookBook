@@ -1,6 +1,7 @@
 let express = require('express');
 let router = express.Router();
 let recipeController = require('../controllers/recipeController');
+const authMiddleware = require('../middleware/authMiddleware');
 
 // Route to get the count of active recipes
 router.get('/active-count', recipeController.getActiveRecipeCount);
@@ -9,7 +10,7 @@ router.get('/active-count', recipeController.getActiveRecipeCount);
 router.get('/inactive-count', recipeController.getInactiveRecipeCount);
 
 //Create recipe route
-router.post('/create', recipeController.createRecipe);
+router.post('/create', authMiddleware, recipeController.createRecipe);
 
 //Get all recipes route
 router.get('/', function (req, res) {
