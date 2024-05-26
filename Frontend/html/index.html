@@ -97,156 +97,78 @@
         </nav>
       </div>
     </aside>
-    <div class="page-wrapper">
-      <div class="page-breadcrumb">
+
+    <!-- Page Content -->
+    <!-- <div class="page-wrapper">
+      <div class="container-fluid">
         <div class="row">
-          <div class="col-12 d-flex no-block align-items-center">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Welcome to CookBook</h5>
+                <p class="card-text">
+                  CookBook is an intuitive digital platform designed to revolutionize the way you manage, discover, and share recipes. Our mission is to make cooking an organized, enjoyable, and community-driven experience for everyone.
+                </p>
+                <p class="card-text"><strong>Features:</strong></p>
+                <ul>
+                  <li>Easy recipe organization and categorization</li>
+                  <li>Extensive library of recipes for all dietary preferences</li>
+                  <li>Comprehensive meal planning tools</li>
+                  <li>Personalized recipe recommendations</li>
+                  <li>Active community engagement and sharing</li>
+                </ul>
+                <p class="card-text">Explore our platform and join a community of cooking enthusiasts who share your passion for delicious and healthy meals.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="container-fluid">
+  </div> -->
 
-        <!-- <div class="row">
-          <div class="col-md-6 col-lg-3 col-xlg-3">
-            <div class="card card-hover">
-              <div class="box bg-cyan text-center">
-                <h1 class="font-light text-white">
-                  <i class="mdi mdi-blur-linear"></i>
-                </h1>
-                <h6 class="text-white">Recipes</h6>
-                <p class="text-white">Active Recipes - <span id="activeRecipeCount"></span></p>
-                <p class="text-white">Inactive Recipes - <span id="inactiveRecipeCount"></span></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 col-xlg-3">
-            <div class="card card-hover">
-              <div class="box bg-success text-center">
-                <h1 class="font-light text-white">
-                  <i class="mdi mdi-chart-areaspline"></i>
-                </h1>
-                <h6 class="text-white">Meel Plans</h6>
-              </div>
+  <div class="page-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Welcome to CookBook</h5>
+              <p class="card-text">
+                CookBook is an intuitive digital platform designed to revolutionize the way you manage, discover, and share recipes. Our mission is to make cooking an organized, enjoyable, and community-driven experience for everyone.
+              </p>
+              <p class="card-text">Explore our platform and join a community of cooking enthusiasts who share your passion for delicious and healthy meals.</p>
             </div>
           </div>
         </div> -->
-
-        <!-- <div class="row">
-          <div id="recent-recipe" class="recipe-card" style="display: ;">
-            <div class="recipe-image">
-              <img src="" alt="Recipe Image" id="recentRecipeImage">
-            </div>
-            <div class="recipe-content">
-              <h3 class="recipe-title" id="recentRecipeTitle">Recipe Title</h3>
-              <p class="recipe-description" id="recentRecipeDescription">Short description of the recipe...</p>
-              <div class="recipe-details">
-                <span class="recipe-ingredients" id="recentRecipeIngredients">Ingredients: List of ingredients...</span>
-                <span class="recipe-instructions" id="recentRecipeInstructions">Instructions: Brief instructions...</span>
+        <div class="col-md-12 mt-2 position-relative">
+          <div id="recipe-carousel" class="carousel slide" data-bs-ride="carousel" style="max-height: 700px;">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1;"></div>
+                <img src="../assets/images/meal1.jpg" class="d-block w-100 blur-image" alt="Meal Image 1" style="max-height: 700px;">
               </div>
-              <div class="recipe-footer">
-                <button class="view-recipe btn btn-primary" id="recentRecipeViewBtn">View Recipe</button>
-                <button class="edit-recipe btn btn-secondary" id="recentRecipeEditBtn">Edit</button>
+              <div class="carousel-item">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1;"></div>
+                <img src="../assets/images/meal2.jpg" class="d-block w-100 blur-image" alt="Meal Image 2" style="max-height: 700px;">
+              </div>
+              <div class="carousel-item">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1;"></div>
+                <img src="../assets/images/meal3.jpg" class="d-block w-100 blur-image" alt="Meal Image 3" style="max-height: 700px;">
               </div>
             </div>
-          </div>
-        </div> -->
-        
-
-        <!-- <div class="row mt-5">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-md-flex align-items-center">
-                  <div>
-                    <h4 class="card-title">Site Analysis</h4>
-                    <h5 class="card-subtitle">Overview of Latest Month</h5>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-9">
-                    <div class="flot-chart">
-                      <div class="flot-chart-content" id="flot-line-chart"></div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3">
-                    <div class="row">
-                      <div class="col-6">
-                        <div class="bg-dark p-10 text-white text-center">
-                          <i class="mdi mdi-account fs-3 mb-1 font-16"></i>
-                          <h5 class="mb-0 mt-1">2540</h5>
-                          <small class="font-light">Total Users</small>
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="bg-dark p-10 text-white text-center">
-                          <i class="mdi mdi-plus fs-3 font-16"></i>
-                          <h5 class="mb-0 mt-1">120</h5>
-                          <small class="font-light">New Users</small>
-                        </div>
-                      </div>
-                      <div class="col-6 mt-3">
-                        <div class="bg-dark p-10 text-white text-center">
-                          <i class="mdi mdi-cart fs-3 mb-1 font-16"></i>
-                          <h5 class="mb-0 mt-1">656</h5>
-                          <small class="font-light">Total Shop</small>
-                        </div>
-                      </div>
-                      <div class="col-6 mt-3">
-                        <div class="bg-dark p-10 text-white text-center">
-                          <i class="mdi mdi-tag fs-3 mb-1 font-16"></i>
-                          <h5 class="mb-0 mt-1">9540</h5>
-                          <small class="font-light">Total Orders</small>
-                        </div>
-                      </div>
-                      <div class="col-6 mt-3">
-                        <div class="bg-dark p-10 text-white text-center">
-                          <i class="mdi mdi-table fs-3 mb-1 font-16"></i>
-                          <h5 class="mb-0 mt-1">100</h5>
-                          <small class="font-light">Pending Orders</small>
-                        </div>
-                      </div>
-                      <div class="col-6 mt-3">
-                        <div class="bg-dark p-10 text-white text-center">
-                          <i class="mdi mdi-web fs-3 mb-1 font-16"></i>
-                          <h5 class="mb-0 mt-1">8540</h5>
-                          <small class="font-light">Online Orders</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#recipe-carousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#recipe-carousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+            <div class="text-center position-absolute top-50 start-50 translate-middle" style="z-index: 2;">
+              <h1 class="text-white">Welcome to CookBook</h1>
+              <h3 class="text-white">Explore our platform and join a community of cooking enthusiasts who share your passion for delicious and healthy meals.</h3>
             </div>
           </div>
-        </div> -->
-        
-        <!-- <div class="row mt-5">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-md-flex align-items-center">
-                  <div>
-                    <h4 class="card-title">Site Analysis</h4>
-                    <h5 class="card-subtitle">Overview of Recipe</h5>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-3">
-                  <canvas id="statusBarChart" width="200" height="200"></canvas>
-                  </div>
-                 
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
+        </div>
       </div>
-
-      <footer class="footer text-center">
-        All Rights Reserved by CookBook.
-        </footer>
     </div>
   </div>
 
