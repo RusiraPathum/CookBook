@@ -1,49 +1,61 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
-
-let app = express();
-let port = process.env.PORT || 3000; 
-
-
-const bodyParser = require('body-parser');
-
-
-const recipes = [
-    { id: 1, name: 'Spaghetti Carbonara', ingredients: ['spaghetti', 'eggs', 'bacon', 'parmesan cheese'] },
-    { id: 2, name: 'Chicken Alfredo', ingredients: ['chicken', 'fettuccine', 'cream', 'parmesan cheese'] },
-    { id: 3, name: 'Vegetable Stir Fry', ingredients: ['vegetables', 'soy sauce', 'rice', 'garlic', 'ginger'] }
-];
+const multer = require("multer");
+const path = require("path");
+const cors = require("cors");
+const recipeRoute = require('./routes/recipeRoute');
+const feedbackRoute = require('./routes/feedbackRoute');  
+const authRoute = require('./routes/authRoute');
+const userRoute = require('./routes/userRoute');
 
 
-app.use(bodyParser.json());
+const app = express();
 
-app.get('/recipes', (req, res) => {
-  const { query, ingredient } = req.query;
+// Middleware to serve static files from the 'uploads' directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-  if (!query && !ingredient) {
-      return res.status(400).json({ error: 'Missing query parameters' });
+// Middleware to parse JSON bodies
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+// Use cors middleware
+app.use(cors());
+
+// Multer configuration for file uploads
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
   }
-
-  let results = recipes;
-
-  // Search logic
-  if (query) {
-      results = results.filter(recipe =>
-          recipe.name.toLowerCase().includes(query.toLowerCase()) ||
-          recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(query.toLowerCase()))
-      );
-  }
-
-  // Filter logic
-  if (ingredient) {
-      results = results.filter(recipe =>
-          recipe.ingredients.includes(ingredient.toLowerCase())
-      );
-  }
-
-  res.json(results);
 });
 
-app.listen(port, () => {
-    console.log("server started");
-  });
+const upload = multer({ storage: storage });
+
+// Recipe route
+app.use('/api/recipe', upload.single('image'), recipeRoute);
+
+// Feedback route
+app.use('/api/feedback', feedbackRoute);
+
+// Authentication and User routes
+app.use('/api/auth', upload.single('image'), authRoute); 
+app.use('/api/user',upload.single('image'), userRoute); 
+
+let MONGO_URL = process.env.MONGO_URL; 
+let PORT = process.env.PORT || 3000; 
+let JWT_SECRET = process.env.JWT_SECRET;
+
+mongoose.set("strictQuery", false);
+mongoose.connect(MONGO_URL)
+    .then(() => {
+        console.log('connected to MongoDB');
+        app.listen(PORT, () => {
+            console.log(`Node API app is running on port ${PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.log(error);
+    });
