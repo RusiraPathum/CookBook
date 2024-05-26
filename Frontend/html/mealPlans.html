@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>CookBook</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="../assets/libs/select2/dist/css/select2.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/libs/jquery-minicolors/jquery.minicolors.css" />
+    <link rel="stylesheet" type="text/css"
+        href="../assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/libs/quill/dist/quill.snow.css" />
+    <link href="../dist/css/style.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+        <header class="topbar" data-navbarbg="skin5">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header" data-logobg="skin5">
+                    <a class="navbar-brand" href="index.html">
+                        <b class="logo-icon ps-2">
+                        </b>
+                        <span class="logo-text ms-2">
+                            <img src="../assets/images/logo-text.png" alt="homepage" class="light-logo"
+                                style="width: 150px; height: 70px;" />
+                        </span>
+                    </a>
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
+                            class="ti-menu ti-close"></i></a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                    <ul class="navbar-nav float-start me-auto">
+                        <li class="nav-item d-none d-lg-block">
+                            <!-- <a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)"
+                                data-sidebartype="mini-sidebar"><i class="mdi mdi-menu font-24"></i></a> -->
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav float-end">
+                        <li class="nav-item dropdown">
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="
+                                  nav-link
+                                  dropdown-toggle
+                                  text-muted
+                                  waves-effect waves-dark
+                                  pro-pic
+                                " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              <img id="userImage" src="../assets/images/users/1.png" alt="user" class="rounded-circle" width="70" height="65" />
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
+                              <a id="myProfileLink" class="dropdown-item" href="javascript:void(0)">
+                                <i class="mdi mdi-account me-1 ms-1"></i> My Profile
+                              </a>
+                              <a id="logout" class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off me-1 ms-1"></i> Logout</a>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="left-sidebar" data-sidebarbg="skin5">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav" class="pt-4">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="recipe.html"
+                                aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
+                                    class="hide-menu">Recipes</span></a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="mealPlans.html"
+                                aria-expanded="false"><i class="mdi mdi-chart-areaspline"></i><span
+                                    class="hide-menu">Meel Plans</span></a>
+                        </li>
+                        
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <div class="page-wrapper">
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">Meel Plans Details</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <!-- Button trigger modal -->
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card p-2">
+                            <div class="card-body row">
+                                <div class="col-10">
+                                </div>
+                                <div class="col-2 text-end">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#recipModal">
+                                        Add MeelPlan
+                                    </button>
+                                </div>
+                            </div>
+                            <table id="recipeTable" class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Table rows will be dynamically added here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="recipeModalLabel">Add Recipe</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="recipe-form" class="form-horizontal needs-validation"
+                                enctype="multipart/form-data" novalidate>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label for="title"
+                                            class="col-sm-3 text-end control-label col-form-label">Title</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="title" placeholder="Title Here"
+                                                required />
+                                            <div class="invalid-feedback">
+                                                Please provide a title.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="description"
+                                            class="col-sm-3 text-end control-label col-form-label">Description</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" id="description"
+                                                placeholder="Description Here" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Please provide a description.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="ingredients"
+                                            class="col-sm-3 text-end control-label col-form-label">Ingredients</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" id="ingredients"
+                                                placeholder="Ingredients Here" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Please provide ingredients.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="instructions"
+                                            class="col-sm-3 text-end control-label col-form-label">Instructions</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" id="instructions"
+                                                placeholder="Instructions Here" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Please provide instructions.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="image"
+                                            class="col-sm-3 text-end control-label col-form-label">Image</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" class="form-control" id="image" required
+                                                accept="image/*" />
+                                            <div class="invalid-feedback">
+                                                Please upload a valid image.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-top">
+                                    <div class="card-body">
+                                        <button type="button" class="btn btn-primary" id="submit-recipe">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="editRecipeModal" tabindex="-1" aria-labelledby="editRecipeModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editRecipeModalLabel">Edit Recipe</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="editRecipeForm" class="form-horizontal needs-validation"
+                                enctype="multipart/form-data" novalidate>
+                                <input type="hidden" id="editRecipeId" name="id">
+                                <div class="mb-3">
+                                    <label for="editTitle" class="form-label">Title</label>
+                                    <input type="text" class="form-control" id="editTitle" name="title" required>
+                                    <div class="invalid-feedback">Please provide a title.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editDescription" class="form-label">Description</label>
+                                    <textarea class="form-control" id="editDescription" name="description"
+                                        required></textarea>
+                                    <div class="invalid-feedback">Please provide a description.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editIngredients" class="form-label">Ingredients</label>
+                                    <textarea class="form-control" id="editIngredients" name="ingredients"
+                                        required></textarea>
+                                    <div class="invalid-feedback">Please provide ingredients.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editInstructions" class="form-label">Instructions</label>
+                                    <textarea class="form-control" id="editInstructions" name="instructions"
+                                        required></textarea>
+                                    <div class="invalid-feedback">Please provide instructions.</div>
+                                </div>
+                                <!-- <div class="row">
+                          <div class="col-6">
+                            <div class="mb-3">
+                              <label for="editImage" class="form-label">Image</label>
+                              <input type="file" class="form-control" id="editImage" name="image" accept="image/*">
+                              <div class="invalid-feedback">Please upload a valid image.</div>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="mb-3">
+                              <img style="width: 50%;" id="editCurrentImage" src="" alt="Current Image" class="img-fluid">
+                            </div>
+                          </div>
+                        </div> -->
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" form="editRecipeForm" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- View Recipe Modal -->
+            <div class="modal fade" id="viewRecipeModal" tabindex="-1" aria-labelledby="viewRecipeModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="viewRecipeModalLabel">View Recipe</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6 row">
+                                    <label for="viewTitle" class="form-label">Title:</label>
+                                    <p id="viewTitle"></p>
+                                </div>
+                                <div class="col-md-6 row">
+                                    <label for="viewDescription" class="form-label">Description:</label>
+                                    <p id="viewDescription"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 row">
+                                    <label for="viewIngredients" class="form-label">Ingredients:</label>
+                                    <p id="viewIngredients"></p>
+                                </div>
+                                <div class="col-md-6 row">
+                                    <label for="viewInstructions" class="form-label">Instructions:</label>
+                                    <p id="viewInstructions"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="viewImage" class="form-label">Image:</label>
+                                    <img style="border-radius: 10px;" id="viewImage" class="img-fluid"
+                                        alt="Recipe Image">
+                                </div>
+                            </div>
+                            <!-- Add more fields here as needed -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer text-center">
+                All Rights Reserved by CookBook.
+            </footer>
+
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="profileModalLabel">My Profile</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="profile-form" class="form-horizontal needs-validation" enctype="multipart/form-data" novalidate>
+                <div class="card-body">
+                  <div class="form-group row">
+                    <label for="name" class="col-sm-3 text-end control-label col-form-label">Name</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="name" placeholder="Your Name" required />
+                      <div class="invalid-feedback">
+                        Please provide your name.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="email" class="col-sm-3 text-end control-label col-form-label">Email</label>
+                    <div class="col-sm-9">
+                      <input type="email" class="form-control" id="email" placeholder="Your Email" required />
+                      <div class="invalid-feedback">
+                        Please provide a valid email.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="profile-picture" class="col-sm-3 text-end control-label col-form-label">Profile Picture</label>
+                    <div class="col-sm-9">
+                      <!-- Display current profile picture -->
+                      <img id="current-profile-picture" src="" class="rounded-circle mb-2" style="width: 100px; height: 100px;" alt="Current Profile Picture">
+                      <!-- Input field to upload new profile picture -->
+                      <input type="file" class="form-control" id="profile-picture" required accept="image/*" />
+                      <div class="invalid-feedback">
+                        Please upload a valid image.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-12 text-end">
+                      <a href="#" id="change-password-link">Change Password</a>
+                    </div>
+                  </div>
+                  <div id="change-password-fields" class="d-none">
+                    <div class="form-group row">
+                      <label for="old-password" class="col-sm-3 text-end control-label col-form-label">Old Password</label>
+                      <div class="col-sm-9">
+                        <input type="password" class="form-control" id="old-password" placeholder="Old Password" />
+                        <div class="invalid-feedback">
+                          Please provide your old password.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="new-password" class="col-sm-3 text-end control-label col-form-label">New Password</label>
+                      <div class="col-sm-9">
+                        <input type="password" class="form-control" id="new-password" placeholder="New Password" />
+                        <div class="invalid-feedback">
+                          Please provide your new password.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="border-top">
+                  <div class="card-body">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../assets/extra-libs/sparkline/sparkline.js"></script>
+    <script src="../dist/js/waves.js"></script>
+    <script src="../dist/js/sidebarmenu.js"></script>
+    <script src="../dist/js/custom.min.js"></script>
+    <script src="../assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="../dist/js/pages/mask/mask.init.js"></script>
+    <script src="../assets/libs/select2/dist/js/select2.full.min.js"></script>
+    <script src="../assets/libs/select2/dist/js/select2.min.js"></script>
+    <script src="../assets/libs/jquery-asColor/dist/jquery-asColor.min.js"></script>
+    <script src="../assets/libs/jquery-asGradient/dist/jquery-asGradient.js"></script>
+    <script src="../assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js"></script>
+    <script src="../assets/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
+    <script src="../assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../assets/libs/quill/dist/quill.min.js"></script>
+    <script src="../js/mealPlans.js"></script>
+    <script src="../js/user.js"></script>
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(".select2").select2();
+
+        $(".demo").each(function () {
+            $(this).minicolors({
+                control: $(this).attr("data-control") || "hue",
+                position: $(this).attr("data-position") || "bottom left",
+
+                change: function (value, opacity) {
+                    if (!value) return;
+                    if (opacity) value += ", " + opacity;
+                    if (typeof console === "object") {
+                        console.log(value);
+                    }
+                },
+                theme: "bootstrap",
+            });
+        });
+        jQuery(".mydatepicker").datepicker();
+        jQuery("#datepicker-autoclose").datepicker({
+            autoclose: true,
+            todayHighlight: true,
+        });
+        var quill = new Quill("#editor", {
+            theme: "snow",
+        });
+    </script>
+</body>
+
+</html>
