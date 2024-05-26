@@ -9,16 +9,12 @@ $("#submit-feedback").click(function (event) {
     //   form.classList.add("was-validated");
     //   return;
     // }
-  
-    // const formData = new FormData();
-    // formData.append("comment", $("#comment").val());
-    console.log("comment",$("#comment").val())
    
     $.ajax({
       type: "POST",
       url: "http://localhost:3000/api/feedback/create",
-      data: {comment:$("#comment").val()},
-      contentType: false,
+      data: JSON.stringify({ comment: $("#comment").val() }),
+      contentType: "application/json; charset=utf-8",
       processData: false,
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
