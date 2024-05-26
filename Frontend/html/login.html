@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../dist/css/style.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark" style="height: 725px;">
+            <div class="auth-box bg-dark border-top border-secondary">
+                <div id="loginform">
+                    <div class="text-center pt-3 pb-3">
+                        <img src="../assets/images/logo.png" alt="logo" style="width: 150px; height: 110px;" />
+                    </div>
+                    <form class="form-horizontal mt-3" id="loginForm">
+                        <div class="row pb-4">
+                            <div class="col-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-success text-white h-100" id="basic-addon1">
+                                            <i class="mdi mdi-account fs-4"></i>
+                                        </span>
+                                    </div>
+                                    <input type="email" class="form-control form-control-lg" id="email" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" required>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-warning text-white h-100" id="basic-addon2">
+                                            <i class="mdi mdi-lock fs-4"></i>
+                                        </span>
+                                    </div>
+                                    <input type="password" class="form-control form-control-lg" id="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row border-top border-secondary">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <div class="pt-3">
+                                        <button class="btn btn-success text-white" type="submit" style="margin-left: 110px;" >
+                                            Login
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <p class="text-center text-white mt-3">Don't have an account? <a href="registration.html" class="text-white">Register here</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/auth.js"></script>
+</body>
+</html>
+
+
+

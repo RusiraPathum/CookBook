@@ -6,9 +6,7 @@ management and meal planning for busy individuals and families. Allows customiza
 dietary preferences and cooking styles. Fosters community engagement among cooking 
 enthusiasts. 
 
-# Cookbook
-
-Cookbook is a comprehensive recipe management application built with Node.js, Express, MongoDB, and Bootstrap. It features recipe management, meal plan management, user management, feedback management, and advanced search functionality.
+--Cookbook is a comprehensive recipe management application built with Node.js, Express, MongoDB, and Bootstrap. It features recipe management, meal plan management, user management, feedback management, and advanced search functionality.
 
 ## Features
 
