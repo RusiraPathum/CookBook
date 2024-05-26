@@ -1,9 +1,10 @@
 let express = require('express');
 let router = express.Router();
 let feedbackController = require('../controllers/feedbackController');
+const authMiddleware = require('../middleware/authMiddleware');
 
 //Create feedback route
-router.post('/create', feedbackController.createFeedback);
+router.post('/create', authMiddleware, feedbackController.createFeedback);
 
 //Delete feedback route
 router.delete('/delete/:id', function (req, res) {
