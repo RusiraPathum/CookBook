@@ -359,35 +359,33 @@
             </div>
 
             <!-- Add Feedback Modal -->
-            <div class="modal fade" id="feedbackRecipeModal" tabindex="-1" aria-labelledby="feedbackRecipeModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="feedbackRecipeModal" tabindex="-1" aria-labelledby="feedbackRecipeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="feedbackRecipeModalLabel">New Feedback</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group row">
-                                <label for="comment"
-                                    class="col-sm-3 text-end control-label col-form-label">Comment</label>
-                                <div class="col-sm-9">
-                                    <textarea class="form-control" id="comment" placeholder="Comment Here"
-                                        required></textarea>
-                                    <div class="invalid-feedback">
-                                        Please provide a comment.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary"
-                                            id="submit-feedback">Submit</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="feedbackRecipeModalLabel">New Feedback</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
+                      <form id="feedback-form" class="needs-validation" novalidate>
+                        <div class="form-group row">
+                          <label for="comment" class="col-sm-3 text-end control-label col-form-label">Comment</label>
+                          <div class="col-sm-9">
+                            <textarea class="form-control" id="comment" placeholder="Comment Here" required></textarea>
+                            <div class="invalid-feedback">
+                              Please provide a comment.
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" id="submit-feedback">Submit</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
                 </div>
-            </div>
+              </div>
 
             <footer class="footer text-center">
                 All Rights Reserved by CookBook.
