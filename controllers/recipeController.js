@@ -150,6 +150,19 @@ const getRecipeStatusData = async function(req, res) {
   }
 };
 
+const searchRecipes = async (req, res) => {
+  try {
+    const query = req.query.query || '';
+
+    const recipes = await Recipe.searchRecipes(query);
+
+    res.status(200).json({ recipes });
+  } catch (error) {
+    console.error('Error searching recipes:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
 // const getMostRecentRecipe = async (req, res) => {
 //   try {
 //     const recentRecipe = await Recipe.findOne().sort({ createdAt: -1 }).exec();
@@ -169,5 +182,6 @@ module.exports = {
   getInactiveRecipeCount,
   updateRecipeStatus,
   getRecipeStatusData,
+  searchRecipes,
   // getMostRecentRecipe,
 };
