@@ -3,7 +3,11 @@ const mongoose = require("mongoose");
 // Define the schema for the Feedback model
 const feedbackSchema = mongoose.Schema(
     {
-      email: String,
+      userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+      },
       comment: String,
     },
     {
@@ -17,7 +21,7 @@ const Feedback = mongoose.model("Feedback", feedbackSchema);
 // Logic for creating a feedback
 Feedback.createFeedback = async (feedbackData) => {
     try {
-      // console.log(feedbackData);
+      console.log(feedbackData);
       return await Feedback.create(feedbackData);
     } catch (error) {
       throw new Error(error.message);

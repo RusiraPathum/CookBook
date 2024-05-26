@@ -2,7 +2,10 @@ const Feedback = require("../models/feedbackModel.js");
 
 // Create feedback method
 const createFeedback = async (req, res) => {
+  
     try {
+
+      console.log(req.body);
         const { email, comment, } = req.body;
 
         const feedbackData = {
