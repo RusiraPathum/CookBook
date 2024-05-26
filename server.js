@@ -8,6 +8,7 @@ const recipeRoute = require('./routes/recipeRoute');
 const feedbackRoute = require('./routes/feedbackRoute');  
 const authRoute = require('./routes/authRoute');
 const userRoute = require('./routes/userRoute');
+const searchRoute = require('./routes/searchRoute');
 
 
 const app = express();
@@ -39,6 +40,9 @@ app.use('/api/recipe', upload.single('image'), recipeRoute);
 
 // Feedback route
 app.use('/api/feedback', feedbackRoute);
+
+// Search route
+app.use('/api/search', searchRoute);
 
 // Authentication and User routes
 app.use('/api/auth', upload.single('image'), authRoute); 
