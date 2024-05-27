@@ -3,73 +3,6 @@ $(document).ready(function () {
   loadRecipes();
 });
 
-// Function to load recipes
-// function loadRecipes() {
-//   $.ajax({
-//     type: "GET",
-//     url: "http://localhost:3000/api/recipe",
-//     success: function (response) {
-//       $("#recipeTable tbody").empty();
-
-//       response.recipes.forEach(function (recipe) {
-//         var row = $("<tr>");
-
-//         $("<td>").text(recipe.title).appendTo(row);
-//         $("<td>").text(recipe.ingredients).appendTo(row);
-
-//         var statusCell = $("<td>");
-//         if (recipe.status) {
-//           statusCell.text("Active").addClass("text-success");
-//         } else {
-//           statusCell.text("Inactive").addClass("text-danger");
-//         }
-//         statusCell.appendTo(row);
-
-//         var imageCell = $("<td>");
-//         $("<img>")
-//           .attr("src", recipe.imageUrl)
-//           .addClass("recipe-image")
-//           .appendTo(imageCell);
-//         imageCell.appendTo(row);
-
-//         var actions = $("<td>").addClass("action-buttons");
-
-//         var viewButton = $("<button>")
-//           .addClass("btn btn-info btn-sm mr-1 text-white view-recipe")
-//           .text("View");
-//         viewButton.attr("data-recipe-id", recipe._id);
-//         viewButton.appendTo(actions);
-
-//         var changeStatusButton = $("<button>")
-//           .addClass("btn btn-success btn-sm mr-1 text-white change-status")
-//           .text("Change Status");
-//         changeStatusButton.attr("data-recipe-id", recipe._id);
-//         changeStatusButton.appendTo(actions);
-
-//         var editButton = $("<button>")
-//           .addClass("btn btn-cyan btn-sm mr-1 text-white edit-recipe")
-//           .text("Edit");
-//         editButton.attr("data-recipe-id", recipe._id);
-//         editButton.appendTo(actions);
-
-//         var deleteButton = $("<button>")
-//           .addClass("btn btn-danger btn-sm text-white delete-recipe")
-//           .text("Delete");
-//         deleteButton.attr("data-recipe-id", recipe._id);
-//         deleteButton.appendTo(actions);
-
-//         actions.appendTo(row);
-
-//         row.appendTo("#recipeTable tbody");
-//       });
-//     },
-//     error: function (error) {
-//       console.error("Error:", error);
-//       alert("Failed to load recipes.");
-//     },
-//   });
-// }
-
 function loadRecipes() {
   $.ajax({
     type: "GET",
@@ -91,7 +24,9 @@ function loadRecipes() {
                   <div class="el-overlay">
                     <ul class="list-style-none el-info">
                       <li class="el-item">
-                        <a class="btn default btn-outline image-popup-vertical-fit el-link" href="${recipe.imageUrl}">
+                        <a class="btn default btn-outline image-popup-vertical-fit el-link" href="${
+                          recipe.imageUrl
+                        }">
                           <i class="mdi mdi-magnify-plus"></i>
                         </a>
                       </li>
@@ -103,21 +38,23 @@ function loadRecipes() {
                   <h4 class="mb-0">${recipe.title}</h4>
                   <span class="text-muted">${recipe.ingredients}</span>
                   <div class="mt-3">
-                  <button class="btn btn-success btn-sm text-white view-recipe" data-recipe-id="${recipe._id}">View</button>
+                  <button class="btn btn-success btn-sm text-white view-recipe" data-recipe-id="${
+                    recipe._id
+                  }">View</button>
                     ${
                       recipe.userId === loggedInUserId
                         ? `
                           <button class="btn btn-cyan btn-sm mr-1 text-white edit-recipe" data-recipe-id="${recipe._id}">Edit</button>
                           <button class="btn btn-danger btn-sm text-white delete-recipe" data-recipe-id="${recipe._id}">Delete</button>
                         `
-                        : ''
+                        : ""
                     }
                     ${
                       recipe.userId !== loggedInUserId
                         ? `
                         <button class="btn btn-info btn-sm text-white feedback-recipe" data-recipe-id="${recipe._id}">Feedback</button>
                         `
-                        : ''
+                        : ""
                     }
                   </div>
                 </div>
@@ -136,7 +73,6 @@ function loadRecipes() {
     },
   });
 }
-
 
 $("#submit-recipe").click(function (event) {
   event.preventDefault();
@@ -172,8 +108,8 @@ $("#submit-recipe").click(function (event) {
     contentType: false,
     processData: false,
     headers: {
-      Authorization: "Bearer " + localStorage.getItem("token") // Retrieve token from localStorage
-  },
+      Authorization: "Bearer " + localStorage.getItem("token"), // Retrieve token from localStorage
+    },
     success: function (response) {
       $("#recipeModal").modal("hide");
 
@@ -273,12 +209,12 @@ $(document).on("click", ".edit-recipe", function () {
 $("#editRecipeForm").submit(function (event) {
   event.preventDefault();
 
-  var form = document.querySelector('#editRecipeForm');
+  var form = document.querySelector("#editRecipeForm");
 
   //validation
   if (form.checkValidity() === false) {
     event.stopPropagation();
-    form.classList.add('was-validated');
+    form.classList.add("was-validated");
     return;
   }
 
@@ -317,7 +253,6 @@ $("#editRecipeForm").submit(function (event) {
     },
   });
 });
-
 
 $(document).on("click", ".change-status", function () {
   var recipeId = $(this).data("recipe-id");
@@ -368,12 +303,89 @@ $(document).on("click", ".view-recipe", function () {
       alert("Failed to fetch recipe data.");
     },
   });
+
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:3000/api/feedback/" + recipeId,
+    success: function (response) {
+      console.log("Feedbacks:", response);
+      var feedbackContainer = $("#viewFeedbacks");
+      feedbackContainer.empty(); // Clear previous feedbacks
+
+      if (response.length === 0) {
+        feedbackContainer.append(
+          "<p>No feedbacks available for this recipe.</p>"
+        );
+      } else {
+        response.forEach(function (feedback) {
+          var feedbackElement = `
+          <div class="d-flex flex-row comment-row p-3 mt-3" style="background-color: #f8f9fa; border-radius: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+            <div class="comment-text row w-100">
+              <div class="col-3 d-flex align-items-center">
+                <h6 class="font-medium mb-0">${feedback.userId.name}</h6>
+              </div>
+              <div class="col-9">
+                <span class="mb-3 d-block">${feedback.comment}</span>
+              </div>
+            </div>
+          </div>
+          <hr class="my-2" style="border: none; border-top: 1px solid #e9ecef;">
+        `;
+          feedbackContainer.append(feedbackElement);
+        });
+      }
+    },
+    error: function (error) {
+      console.error("Error:", error);
+      // alert("Failed to fetch recipe data.");
+    },
+  });
 });
 
 $(document).on("click", ".feedback-recipe", function () {
   var recipeId = $(this).attr("data-recipe-id");
-  console.log(recipeId);
-
+  // console.log(recipeId);
+  $("#recipeId").val(recipeId);
   $("#feedbackRecipeModal").modal("show");
+});
 
+$("#submit-feedback").click(function (event) {
+  event.preventDefault();
+
+  var form = document.querySelector("#feedback-form");
+
+  $.ajax({
+    type: "POST",
+    url: "http://localhost:3000/api/feedback/create",
+    data: JSON.stringify({
+      comment: $("#comment").val(),
+      recipeId: $("#recipeId").val(),
+    }),
+    contentType: "application/json; charset=utf-8",
+    processData: false,
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+    success: function (response) {
+      //$("#feedbackModal").modal("hide");
+
+      Swal.fire({
+        icon: "success",
+        title: "Feedback added successfully!",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        // Reset the feedback form
+        form.reset();
+        // Hide the feedback modal
+        $("#feedbackRecipeModal").modal("hide");
+      });
+
+      // loadFeedback();
+    },
+    error: function (error) {
+      console.error("Error:", error);
+      alert("Failed to add feedback.");
+    },
+  });
 });

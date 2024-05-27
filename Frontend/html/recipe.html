@@ -349,6 +349,14 @@
                                 </div>
                             </div>
 
+                            <!-- New feedback container -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="viewFeedbacks" class="form-label">Feedbacks:</label>
+                                    <div id="viewFeedbacks"></div>
+                                </div>
+                            </div>
+
                             <!-- Add more fields here as needed -->
                         </div>
                         <div class="modal-footer">
@@ -359,33 +367,37 @@
             </div>
 
             <!-- Add Feedback Modal -->
-            <div class="modal fade" id="feedbackRecipeModal" tabindex="-1" aria-labelledby="feedbackRecipeModalLabel" aria-hidden="true">
+            <div class="modal fade" id="feedbackRecipeModal" tabindex="-1" aria-labelledby="feedbackRecipeModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="feedbackRecipeModalLabel">New Feedback</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <form id="feedback-form" class="needs-validation" novalidate>
-                        <div class="form-group row">
-                          <label for="comment" class="col-sm-3 text-end control-label col-form-label">Comment</label>
-                          <div class="col-sm-9">
-                            <textarea class="form-control" id="comment" placeholder="Comment Here" required></textarea>
-                            <div class="invalid-feedback">
-                              Please provide a comment.
-                            </div>
-                          </div>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="feedbackRecipeModalLabel">New Feedback</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                      </form>
+                        <div class="modal-body">
+                            <form id="feedback-form" class="needs-validation" novalidate>
+                                <div class="form-group row">
+                                    <label for="comment"
+                                        class="col-sm-3 text-end control-label col-form-label">Comment</label>
+                                    <div class="col-sm-9">
+                                        <input id="recipeId" hidden>
+                                        <textarea class="form-control" id="comment" placeholder="Comment Here"
+                                            required></textarea>
+                                        <div class="invalid-feedback">
+                                            Please provide a comment.
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="submit-feedback">Submit</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-primary" id="submit-feedback">Submit</button>
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                  </div>
                 </div>
-              </div>
+            </div>
 
             <footer class="footer text-center">
                 All Rights Reserved by CookBook.
@@ -504,7 +516,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
     <script src="../js/user.js"></script>
     <script src="../js/recipe.js"></script>
-    <script src="../js/feedback.js"></script>
+    <!-- <script src="../js/feedback.js"></script> -->
     <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
     <script>
         $(".select2").select2();

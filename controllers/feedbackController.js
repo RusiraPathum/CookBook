@@ -3,7 +3,7 @@ const Feedback = require("../models/feedbackModel.js");
 // Create feedback method
 const createFeedback = async (req, res) => {
   try {
-    const { comment } = req.body;
+    const { comment, recipeId } = req.body;
     const userId = req.user.userId; 
 
     if (!userId || !comment) {
@@ -15,7 +15,10 @@ const createFeedback = async (req, res) => {
     const newFeedback = new Feedback({
       userId: userId,
       comment: comment,
+      recipeId: recipeId,
     });
+
+    console.log(newFeedback);
 
     const savedFeedback = await newFeedback.save(); // Save the feedback
     res.status(200).json({ feedback: savedFeedback });
@@ -24,6 +27,22 @@ const createFeedback = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+// Get feedbacks by recipe ID method
+const getFeedbacksByRecipeId = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const feedbacks = await Feedback.getFeedbacksByRecipeId(id);
+    if (!feedbacks || feedbacks.length === 0) {
+      return res.status(404).json({ message: "No feedback found for this recipe." });
+    }
+    res.status(200).json(feedbacks);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ message: error.message });
+  }
+};
+
 
 // Delete feedbackmethod
 const deleteFeedback = async (req, res) => {
@@ -58,4 +77,5 @@ module.exports = {
   createFeedback,
   deleteFeedback,
   getAllFeedbacks,
+  getFeedbacksByRecipeId
 };

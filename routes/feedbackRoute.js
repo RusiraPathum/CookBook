@@ -16,4 +16,9 @@ router.get('/', function (req, res) {
     feedbackController.getAllFeedbacks(req, res);
 });
 
+router.get('/:id', function (req, res) {
+    feedbackController.getFeedbacksByRecipeId(req, res);
+  });
+  
+
 module.exports = router;
