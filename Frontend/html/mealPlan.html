@@ -16,10 +16,6 @@
     <link rel="stylesheet" type="text/css"
         href="../assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" />
     <link rel="stylesheet" type="text/css" href="../assets/libs/quill/dist/quill.snow.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
     <link href="../dist/css/style.min.css" rel="stylesheet" />
 
 </head>
@@ -75,14 +71,18 @@
                                   text-muted
                                   waves-effect waves-dark
                                   pro-pic
-                                " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              <img id="userImage" src="../assets/images/users/1.png" alt="user" class="rounded-circle" width="70" height="65" />
+                                " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img id="userImage" src="../assets/images/users/1.png" alt="user" class="rounded-circle"
+                                    width="70" height="65" />
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                              <a id="myProfileLink" class="dropdown-item" href="javascript:void(0)">
-                                <i class="mdi mdi-account me-1 ms-1"></i> My Profile
-                              </a>
-                              <a id="logout" class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off me-1 ms-1"></i> Logout</a>
+                            <ul class="dropdown-menu dropdown-menu-end user-dd animated"
+                                aria-labelledby="navbarDropdown">
+                                <a id="myProfileLink" class="dropdown-item" href="javascript:void(0)">
+                                    <i class="mdi mdi-account me-1 ms-1"></i> My Profile
+                                </a>
+                                <a id="logout" class="dropdown-item" href="javascript:void(0)"><i
+                                        class="fa fa-power-off me-1 ms-1"></i> Logout</a>
                             </ul>
                         </li>
                     </ul>
@@ -99,11 +99,11 @@
                                     class="hide-menu">Recipes</span></a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="mealPlans.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="mealPlan.html"
                                 aria-expanded="false"><i class="mdi mdi-chart-areaspline"></i><span
-                                    class="hide-menu">Meel Plans</span></a>
+                                    class="hide-menu">Meal Plans</span></a>
                         </li>
-                        
+
                     </ul>
                 </nav>
             </div>
@@ -113,113 +113,74 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Meeeel Plans Details</h4>
+                        <!-- <h4 class="page-title">Meel Plans Details</h4> -->
                     </div>
                 </div>
             </div>
 
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <!-- Button trigger modal -->
-
-
-                        </div>
+                <div class="row mb-5">
+                    <div class="text-end">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#mealPlanModal">
+                            Add MeelPlan
+                        </button>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card p-2">
-                            <div class="card-body row">
-                                <div class="col-10">
-                                </div>
-                                <div class="col-2 text-end">
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#mealPlanModal">
-                                        Add MealPlan
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row el-element-overlay" id="mealPlanContainer">
                 </div>
-
 
             </div>
 
-            <div class="modal fade" id="mealPlanModal" tabindex="-1" aria-labelledby="mealPlanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="mealPlanModal" tabindex="-1" aria-labelledby="mealPlanModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="mealPlanModalLabel">Add Meal Plan</h5>
+                            <h5 class="modal-title" id="mealPlanModalLabel">Add MealPlan</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="meal-plan-form" class="form-horizontal needs-validation" novalidate>
+                            <form id="mealPlan-form" class="form-horizontal needs-validation"
+                                enctype="multipart/form-data" novalidate>
                                 <div class="card-body">
-                                    <!-- Meal Plan Name -->
                                     <div class="form-group row">
-                                        <label for="mealPlanName" class="col-sm-3 text-end control-label col-form-label">Meal Plan Name</label>
+                                        <label for="title"
+                                            class="col-sm-3 text-end control-label col-form-label">MealPlan name</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="mealPlanName" placeholder="Meal Plan Name Here" required />
+                                            <input type="text" name="title" class="form-control" id="title" placeholder="Title Here"
+                                                required />
                                             <div class="invalid-feedback">
-                                                Please provide a meal plan name.
+                                                Please provide a title.
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Meal Type -->
                                     <div class="form-group row">
-                                        <label for="mealType" class="col-sm-3 text-end control-label col-form-label">Meal Type</label>
+                                        <label for="recipeSelect" class="col-sm-3 text-end control-label col-form-label">Select Recipe</label>
                                         <div class="col-sm-9">
-                                            <select class="form-control" id="mealType" required>
-                                                <option value="">Select Meal Type</option>
-                                                <option value="Breakfast">Breakfast</option>
-                                                <option value="Lunch">Lunch</option>
-                                                <option value="Snack">Snack</option>
-                                                <option value="Dinner">Dinner</option>
+                                            <select name="recipe" class="form-select" id="recipeSelect" required>
+                                                <option value="">Select Recipe</option>
                                             </select>
                                             <div class="invalid-feedback">
-                                                Please select a meal type.
+                                                Please select a recipe.
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Recipe Names -->
                                     <div class="form-group row">
-                                        <label for="recipeNames" class="col-sm-3 text-end control-label col-form-label">Recipe Names</label>
+                                        <label for="date" class="col-sm-3 text-end control-label col-form-label">Select
+                                            Date</label>
                                         <div class="col-sm-9">
-                                            <select class="form-control" id="recipeNames" required>
-                                                <!-- Recipe options should be populated from the database -->
-                                            </select>
+                                            <input type="date" name="date" class="form-control" id="date" required />
                                             <div class="invalid-feedback">
-                                                Please select at least one recipe.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Meal Plan Day -->
-                                    <div class="form-group row">
-                                        <label for="mealPlanDay" class="col-sm-3 text-end control-label col-form-label">Meal Plan Day</label>
-                                        <div class="col-sm-9">
-                                            <select class="form-control" id="mealPlanDay" required>
-                                                <option value="">Select Day</option>
-                                                <option value="Sunday">Sunday</option>
-                                                <option value="Monday">Monday</option>
-                                                <option value="Tuesday">Tuesday</option>
-                                                <option value="Wednesday">Wednesday</option>
-                                                <option value="Thursday">Thursday</option>
-                                                <option value="Friday">Friday</option>
-                                                <option value="Saturday">Saturday</option>
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                Please select a day.
+                                                Please select a date.
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="border-top">
                                     <div class="card-body">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="button" class="btn btn-primary"
+                                            id="submit-mealPlan">Submit</button>
                                     </div>
                                 </div>
                             </form>
@@ -227,77 +188,47 @@
                     </div>
                 </div>
             </div>
-            
-            
-            
 
-            <div class="modal fade" id="editmealPlanModal" tabindex="-1" aria-labelledby="editmealPlanModalLabel"
-                aria-hidden="true">
+
+            <div class="modal fade" id="editMealPlanModal" tabindex="-1" aria-labelledby="editMealPlanModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="editmealPlanModalLabel">Edit Recipe</h5>
+                            <h5 class="modal-title" id="editMealPlanModalLabel">Edit MealPlan</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="editRecipeForm" class="form-horizontal needs-validation"
-                                enctype="multipart/form-data" novalidate>
-                                <input type="hidden" id="editRecipeId" name="id">
+                            <form id="editMealPlanForm" class="form-horizontal needs-validation" enctype="multipart/form-data" novalidate>
+                                <input type="hidden" id="editMealPlanId" name="id">
                                 <div class="mb-3">
                                     <label for="editTitle" class="form-label">Title</label>
                                     <input type="text" class="form-control" id="editTitle" name="title" required>
                                     <div class="invalid-feedback">Please provide a title.</div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="editDescription" class="form-label">Description</label>
-                                    <textarea class="form-control" id="editDescription" name="description"
-                                        required></textarea>
-                                    <div class="invalid-feedback">Please provide a description.</div>
+                                    <label for="editDate" class="form-label">Date</label>
+                                    <input type="date" class="form-control" id="editDate" name="date" required>
+                                    <div class="invalid-feedback">Please provide a date.</div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="editIngredients" class="form-label">Ingredients</label>
-                                    <textarea class="form-control" id="editIngredients" name="ingredients"
-                                        required></textarea>
-                                    <div class="invalid-feedback">Please provide ingredients.</div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editInstructions" class="form-label">Instructions</label>
-                                    <textarea class="form-control" id="editInstructions" name="instructions"
-                                        required></textarea>
-                                    <div class="invalid-feedback">Please provide instructions.</div>
-                                </div>
-                                <!-- <div class="row">
-                          <div class="col-6">
-                            <div class="mb-3">
-                              <label for="editImage" class="form-label">Image</label>
-                              <input type="file" class="form-control" id="editImage" name="image" accept="image/*">
-                              <div class="invalid-feedback">Please upload a valid image.</div>
-                            </div>
-                          </div>
-                          <div class="col-6">
-                            <div class="mb-3">
-                              <img style="width: 50%;" id="editCurrentImage" src="" alt="Current Image" class="img-fluid">
-                            </div>
-                          </div>
-                        </div> -->
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" form="editRecipeForm" class="btn btn-primary">Save changes</button>
+                            <button type="submit" form="editMealPlanForm" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </div>
             </div>
+            
 
 
-            <!-- View Recipe Modal -->
-            <div class="modal fade" id="viewmealPlanModal" tabindex="-1" aria-labelledby="viewmealPlanModalLabel"
+            <!-- View MealPlan Modal -->
+            <div class="modal fade" id="viewMealPlanModal" tabindex="-1" aria-labelledby="viewMealPlanModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="viewmealPlanModalLabel">View Recipe</h5>
+                            <h5 class="modal-title" id="viewMealPlanModalLabel">View MealPlan</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -325,7 +256,7 @@
                                 <div class="col-md-12">
                                     <label for="viewImage" class="form-label">Image:</label>
                                     <img style="border-radius: 10px;" id="viewImage" class="img-fluid"
-                                        alt="Recipe Image">
+                                        alt="MealPlan Image">
                                 </div>
                             </div>
                             <!-- Add more fields here as needed -->
@@ -347,81 +278,91 @@
 
     <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="profileModalLabel">My Profile</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form id="profile-form" class="form-horizontal needs-validation" enctype="multipart/form-data" novalidate>
-                <div class="card-body">
-                  <div class="form-group row">
-                    <label for="name" class="col-sm-3 text-end control-label col-form-label">Name</label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="name" placeholder="Your Name" required />
-                      <div class="invalid-feedback">
-                        Please provide your name.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="email" class="col-sm-3 text-end control-label col-form-label">Email</label>
-                    <div class="col-sm-9">
-                      <input type="email" class="form-control" id="email" placeholder="Your Email" required />
-                      <div class="invalid-feedback">
-                        Please provide a valid email.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="profile-picture" class="col-sm-3 text-end control-label col-form-label">Profile Picture</label>
-                    <div class="col-sm-9">
-                      <!-- Display current profile picture -->
-                      <img id="current-profile-picture" src="" class="rounded-circle mb-2" style="width: 100px; height: 100px;" alt="Current Profile Picture">
-                      <!-- Input field to upload new profile picture -->
-                      <input type="file" class="form-control" id="profile-picture" required accept="image/*" />
-                      <div class="invalid-feedback">
-                        Please upload a valid image.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-sm-12 text-end">
-                      <a href="#" id="change-password-link">Change Password</a>
-                    </div>
-                  </div>
-                  <div id="change-password-fields" class="d-none">
-                    <div class="form-group row">
-                      <label for="old-password" class="col-sm-3 text-end control-label col-form-label">Old Password</label>
-                      <div class="col-sm-9">
-                        <input type="password" class="form-control" id="old-password" placeholder="Old Password" />
-                        <div class="invalid-feedback">
-                          Please provide your old password.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="new-password" class="col-sm-3 text-end control-label col-form-label">New Password</label>
-                      <div class="col-sm-9">
-                        <input type="password" class="form-control" id="new-password" placeholder="New Password" />
-                        <div class="invalid-feedback">
-                          Please provide your new password.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profileModalLabel">My Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="border-top">
-                  <div class="card-body">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                  </div>
+                <div class="modal-body">
+                    <form id="profile-form" class="form-horizontal needs-validation" enctype="multipart/form-data"
+                        novalidate>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label for="name" class="col-sm-3 text-end control-label col-form-label">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="name" placeholder="Your Name"
+                                        required />
+                                    <div class="invalid-feedback">
+                                        Please provide your name.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email" class="col-sm-3 text-end control-label col-form-label">Email</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" id="email" placeholder="Your Email"
+                                        required />
+                                    <div class="invalid-feedback">
+                                        Please provide a valid email.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="profile-picture"
+                                    class="col-sm-3 text-end control-label col-form-label">Profile Picture</label>
+                                <div class="col-sm-9">
+                                    <!-- Display current profile picture -->
+                                    <img id="current-profile-picture" src="" class="rounded-circle mb-2"
+                                        style="width: 100px; height: 100px;" alt="Current Profile Picture">
+                                    <!-- Input field to upload new profile picture -->
+                                    <input type="file" class="form-control" id="profile-picture" required
+                                        accept="image/*" />
+                                    <div class="invalid-feedback">
+                                        Please upload a valid image.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 text-end">
+                                    <a href="#" id="change-password-link">Change Password</a>
+                                </div>
+                            </div>
+                            <div id="change-password-fields" class="d-none">
+                                <div class="form-group row">
+                                    <label for="old-password" class="col-sm-3 text-end control-label col-form-label">Old
+                                        Password</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" id="old-password"
+                                            placeholder="Old Password" />
+                                        <div class="invalid-feedback">
+                                            Please provide your old password.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="new-password" class="col-sm-3 text-end control-label col-form-label">New
+                                        Password</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" id="new-password"
+                                            placeholder="New Password" />
+                                        <div class="invalid-feedback">
+                                            Please provide your new password.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-top">
+                            <div class="card-body">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-              </form>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
 
     <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -441,7 +382,8 @@
     <script src="../assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assets/libs/quill/dist/quill.min.js"></script>
-    <script src="../js/mealPlans.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+    <script src="../js/mealPlan.js"></script>
     <script src="../js/user.js"></script>
     <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
     <script>
