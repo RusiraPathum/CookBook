@@ -130,4 +130,19 @@ Recipe.getRecipeStatusChartData = async function() {
   }
 };
 
+// Logic for searching recipes
+Recipe.searchRecipes = async (query) => {
+  try {
+    const searchResults = await Recipe.find({
+      $or: [
+        { title: { $regex: query, $options: 'i' } },
+        { ingredients: { $regex: query, $options: 'i' } }
+      ]
+    });
+    return searchResults;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = Recipe;

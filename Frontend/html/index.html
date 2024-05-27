@@ -31,7 +31,8 @@
             <b class="logo-icon ps-2">
             </b>
             <span class="logo-text ms-2">
-              <img src="../assets/images/logo-text.png" alt="homepage" class="light-logo" style="width: 150px; height: 70px;" />
+              <img src="../assets/images/logo-text.png" alt="homepage" class="light-logo"
+                style="width: 150px; height: 70px;" />
             </span>
           </a>
           <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
@@ -66,16 +67,18 @@
                     waves-effect waves-dark
                     pro-pic
                   " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img id="userImage" src="../assets/images/users/1.png" alt="user" class="rounded-circle" width="70" height="65" />
+                <img id="userImage" src="../assets/images/users/1.png" alt="user" class="rounded-circle" width="70"
+                  height="65" />
               </a>
               <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                 <a id="myProfileLink" class="dropdown-item" href="javascript:void(0)">
                   <i class="mdi mdi-account me-1 ms-1"></i> My Profile
                 </a>
-                <a id="logout" class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off me-1 ms-1"></i> Logout</a>
+                <a id="logout" class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off me-1 ms-1"></i>
+                  Logout</a>
               </ul>
-          </li>
-            
+            </li>
+
           </ul>
         </div>
       </nav>
@@ -89,244 +92,244 @@
                   class="mdi mdi-blur-linear"></i><span class="hide-menu">Recipes</span></a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="mealPlans.html" aria-expanded="false"><i
-                  class="mdi mdi-chart-areaspline"></i><span class="hide-menu">Meel Plans</span></a>
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="mealPlans.html"
+                aria-expanded="false"><i class="mdi mdi-chart-areaspline"></i><span class="hide-menu">Meel
+                  Plans</span></a>
             </li>
-            
+
           </ul>
         </nav>
       </div>
     </aside>
-    <div class="page-wrapper">
-      <div class="page-breadcrumb">
+
+    <!-- Page Content -->
+    <!-- <div class="page-wrapper">
+      <div class="container-fluid">
         <div class="row">
-          <div class="col-12 d-flex no-block align-items-center">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Welcome to CookBook</h5>
+                <p class="card-text">
+                  CookBook is an intuitive digital platform designed to revolutionize the way you manage, discover, and share recipes. Our mission is to make cooking an organized, enjoyable, and community-driven experience for everyone.
+                </p>
+                <p class="card-text"><strong>Features:</strong></p>
+                <ul>
+                  <li>Easy recipe organization and categorization</li>
+                  <li>Extensive library of recipes for all dietary preferences</li>
+                  <li>Comprehensive meal planning tools</li>
+                  <li>Personalized recipe recommendations</li>
+                  <li>Active community engagement and sharing</li>
+                </ul>
+                <p class="card-text">Explore our platform and join a community of cooking enthusiasts who share your passion for delicious and healthy meals.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+  </div> -->
+
+    <div class="page-wrapper">
+
       <div class="container-fluid">
-
-        <!-- <div class="row">
-          <div class="col-md-6 col-lg-3 col-xlg-3">
-            <div class="card card-hover">
-              <div class="box bg-cyan text-center">
-                <h1 class="font-light text-white">
-                  <i class="mdi mdi-blur-linear"></i>
-                </h1>
-                <h6 class="text-white">Recipes</h6>
-                <p class="text-white">Active Recipes - <span id="activeRecipeCount"></span></p>
-                <p class="text-white">Inactive Recipes - <span id="inactiveRecipeCount"></span></p>
+        <div class="col-md-12 mt-2 position-relative">
+          <div id="recipe-carousel" class="carousel slide" data-bs-ride="carousel" style="max-height: 700px;">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div
+                  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1;">
+                </div>
+                <img src="../assets/images/meal1.jpg" class="d-block w-100 blur-image" alt="Meal Image 1"
+                  style="max-height: 700px;">
               </div>
+              <div class="carousel-item">
+                <div
+                  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1;">
+                </div>
+                <img src="../assets/images/meal2.jpg" class="d-block w-100 blur-image" alt="Meal Image 2"
+                  style="max-height: 700px;">
+              </div>
+              <div class="carousel-item">
+                <div
+                  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1;">
+                </div>
+                <img src="../assets/images/meal3.jpg" class="d-block w-100 blur-image" alt="Meal Image 3"
+                  style="max-height: 700px;">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#recipe-carousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#recipe-carousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+            <div class="text-center position-absolute top-50 start-50 translate-middle" style="z-index: 2;">
+              <h1 class="text-white">Welcome to CookBook</h1>
+              <h3 class="text-white">Explore our platform and join a community of cooking enthusiasts who share your
+                passion for delicious and healthy meals.</h3>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3 col-xlg-3">
-            <div class="card card-hover">
-              <div class="box bg-success text-center">
-                <h1 class="font-light text-white">
-                  <i class="mdi mdi-chart-areaspline"></i>
-                </h1>
-                <h6 class="text-white">Meel Plans</h6>
-              </div>
-            </div>
-          </div>
-        </div> -->
+        </div>
+      </div>
 
-        <!-- <div class="row">
-          <div id="recent-recipe" class="recipe-card" style="display: ;">
-            <div class="recipe-image">
-              <img src="" alt="Recipe Image" id="recentRecipeImage">
-            </div>
-            <div class="recipe-content">
-              <h3 class="recipe-title" id="recentRecipeTitle">Recipe Title</h3>
-              <p class="recipe-description" id="recentRecipeDescription">Short description of the recipe...</p>
-              <div class="recipe-details">
-                <span class="recipe-ingredients" id="recentRecipeIngredients">Ingredients: List of ingredients...</span>
-                <span class="recipe-instructions" id="recentRecipeInstructions">Instructions: Brief instructions...</span>
-              </div>
-              <div class="recipe-footer">
-                <button class="view-recipe btn btn-primary" id="recentRecipeViewBtn">View Recipe</button>
-                <button class="edit-recipe btn btn-secondary" id="recentRecipeEditBtn">Edit</button>
-              </div>
-            </div>
-          </div>
-        </div> -->
-        
-
-        <!-- <div class="row mt-5">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-md-flex align-items-center">
-                  <div>
-                    <h4 class="card-title">Site Analysis</h4>
-                    <h5 class="card-subtitle">Overview of Latest Month</h5>
+      <div class="row mb-5">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <form id="searchForm" class="needs-validation" novalidate>
+                <div class="form-group">
+                  <label for="searchInput">Search</label>
+                  <input type="text" class="form-control" id="searchInput" name="query" required>
+                  <div class="invalid-feedback">
+                    Please enter a search query.
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-lg-9">
-                    <div class="flot-chart">
-                      <div class="flot-chart-content" id="flot-line-chart"></div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3">
-                    <div class="row">
-                      <div class="col-6">
-                        <div class="bg-dark p-10 text-white text-center">
-                          <i class="mdi mdi-account fs-3 mb-1 font-16"></i>
-                          <h5 class="mb-0 mt-1">2540</h5>
-                          <small class="font-light">Total Users</small>
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="bg-dark p-10 text-white text-center">
-                          <i class="mdi mdi-plus fs-3 font-16"></i>
-                          <h5 class="mb-0 mt-1">120</h5>
-                          <small class="font-light">New Users</small>
-                        </div>
-                      </div>
-                      <div class="col-6 mt-3">
-                        <div class="bg-dark p-10 text-white text-center">
-                          <i class="mdi mdi-cart fs-3 mb-1 font-16"></i>
-                          <h5 class="mb-0 mt-1">656</h5>
-                          <small class="font-light">Total Shop</small>
-                        </div>
-                      </div>
-                      <div class="col-6 mt-3">
-                        <div class="bg-dark p-10 text-white text-center">
-                          <i class="mdi mdi-tag fs-3 mb-1 font-16"></i>
-                          <h5 class="mb-0 mt-1">9540</h5>
-                          <small class="font-light">Total Orders</small>
-                        </div>
-                      </div>
-                      <div class="col-6 mt-3">
-                        <div class="bg-dark p-10 text-white text-center">
-                          <i class="mdi mdi-table fs-3 mb-1 font-16"></i>
-                          <h5 class="mb-0 mt-1">100</h5>
-                          <small class="font-light">Pending Orders</small>
-                        </div>
-                      </div>
-                      <div class="col-6 mt-3">
-                        <div class="bg-dark p-10 text-white text-center">
-                          <i class="mdi mdi-web fs-3 mb-1 font-16"></i>
-                          <h5 class="mb-0 mt-1">8540</h5>
-                          <small class="font-light">Online Orders</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+              </form>
             </div>
           </div>
-        </div> -->
-        
-        <!-- <div class="row mt-5">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-md-flex align-items-center">
-                  <div>
-                    <h4 class="card-title">Site Analysis</h4>
-                    <h5 class="card-subtitle">Overview of Recipe</h5>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-3">
-                  <canvas id="statusBarChart" width="200" height="200"></canvas>
-                  </div>
-                 
+        </div>
+        <div class="col-2"></div>
+      </div>
 
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
+      <div class="row mt-4" id="recipeContainer">
+        <!-- Recipe cards will be dynamically inserted here -->
       </div>
 
       <footer class="footer text-center">
         All Rights Reserved by CookBook.
-        </footer>
+      </footer>
+
+      <div class="modal fade" id="viewRecipeModal" tabindex="-1" aria-labelledby="viewRecipeModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="viewRecipeModalLabel">View Recipe</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12 mb-5 text-center">
+                                    <img style="border-radius: 10px;" id="viewImage" class="img-fluid"
+                                        alt="Recipe Image">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 row">
+                                    <label for="viewTitle" class="form-label">Title:</label>
+                                    <p id="viewTitle"></p>
+                                </div>
+                                <div class="col-md-6 row">
+                                    <label for="viewDescription" class="form-label">Description:</label>
+                                    <p id="viewDescription"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 row">
+                                    <label for="viewIngredients" class="form-label">Ingredients:</label>
+                                    <p id="viewIngredients"></p>
+                                </div>
+                                <div class="col-md-6 row">
+                                    <label for="viewInstructions" class="form-label">Instructions:</label>
+                                    <p id="viewInstructions"></p>
+                                </div>
+                            </div>
+                            
+                            <!-- Add more fields here as needed -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
+
   </div>
 
-<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="profileModalLabel">My Profile</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form id="profile-form" class="form-horizontal needs-validation" enctype="multipart/form-data" novalidate>
-          <div class="card-body">
-            <div class="form-group row">
-              <label for="name" class="col-sm-3 text-end control-label col-form-label">Name</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="name" placeholder="Your Name" required />
-                <div class="invalid-feedback">
-                  Please provide your name.
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="email" class="col-sm-3 text-end control-label col-form-label">Email</label>
-              <div class="col-sm-9">
-                <input type="email" class="form-control" id="email" placeholder="Your Email" required />
-                <div class="invalid-feedback">
-                  Please provide a valid email.
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="profile-picture" class="col-sm-3 text-end control-label col-form-label">Profile Picture</label>
-              <div class="col-sm-9">
-                <!-- Display current profile picture -->
-                <img id="current-profile-picture" src="" class="rounded-circle mb-2" style="width: 100px; height: 100px;" alt="Current Profile Picture">
-                <!-- Input field to upload new profile picture -->
-                <input type="file" class="form-control" id="profile-picture" required accept="image/*" />
-                <div class="invalid-feedback">
-                  Please upload a valid image.
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-sm-12 text-end">
-                <a href="#" id="change-password-link">Change Password</a>
-              </div>
-            </div>
-            <div id="change-password-fields" class="d-none">
-              <div class="form-group row">
-                <label for="old-password" class="col-sm-3 text-end control-label col-form-label">Old Password</label>
-                <div class="col-sm-9">
-                  <input type="password" class="form-control" id="old-password" placeholder="Old Password" />
-                  <div class="invalid-feedback">
-                    Please provide your old password.
-                  </div>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="new-password" class="col-sm-3 text-end control-label col-form-label">New Password</label>
-                <div class="col-sm-9">
-                  <input type="password" class="form-control" id="new-password" placeholder="New Password" />
-                  <div class="invalid-feedback">
-                    Please provide your new password.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="border-top">
+  <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="profileModalLabel">My Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="profile-form" class="form-horizontal needs-validation" enctype="multipart/form-data" novalidate>
             <div class="card-body">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary">Save Changes</button>
+              <div class="form-group row">
+                <label for="name" class="col-sm-3 text-end control-label col-form-label">Name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="name" placeholder="Your Name" required />
+                  <div class="invalid-feedback">
+                    Please provide your name.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="email" class="col-sm-3 text-end control-label col-form-label">Email</label>
+                <div class="col-sm-9">
+                  <input type="email" class="form-control" id="email" placeholder="Your Email" required />
+                  <div class="invalid-feedback">
+                    Please provide a valid email.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="profile-picture" class="col-sm-3 text-end control-label col-form-label">Profile
+                  Picture</label>
+                <div class="col-sm-9">
+                  <!-- Display current profile picture -->
+                  <img id="current-profile-picture" src="" class="rounded-circle mb-2"
+                    style="width: 100px; height: 100px;" alt="Current Profile Picture">
+                  <!-- Input field to upload new profile picture -->
+                  <input type="file" class="form-control" id="profile-picture" required accept="image/*" />
+                  <div class="invalid-feedback">
+                    Please upload a valid image.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-12 text-end">
+                  <a href="#" id="change-password-link">Change Password</a>
+                </div>
+              </div>
+              <div id="change-password-fields" class="d-none">
+                <div class="form-group row">
+                  <label for="old-password" class="col-sm-3 text-end control-label col-form-label">Old Password</label>
+                  <div class="col-sm-9">
+                    <input type="password" class="form-control" id="old-password" placeholder="Old Password" />
+                    <div class="invalid-feedback">
+                      Please provide your old password.
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="new-password" class="col-sm-3 text-end control-label col-form-label">New Password</label>
+                  <div class="col-sm-9">
+                    <input type="password" class="form-control" id="new-password" placeholder="New Password" />
+                    <div class="invalid-feedback">
+                      Please provide your new password.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </form>
+            <div class="border-top">
+              <div class="card-body">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
